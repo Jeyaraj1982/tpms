@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Forms - Atlantis Lite Bootstrap 4 Admin Dashboard</title>
+	<title>Notifications - Atlantis Lite Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon"/>
 	
@@ -24,19 +24,8 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="../../assets/css/demo.css">
 </head>
-<style>
-.sub-header{
-padding: 5px;
-margin-bottom:15px;
-background-color: transparent;
-border-bottom: 1px solid #ebecec !important;
-}
-.errorstring{
-    color:red;
-}
-</style>
 <body>
-	<div class="wrapper sidebar_minimize">
+	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
@@ -59,7 +48,8 @@ border-bottom: 1px solid #ebecec !important;
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">			
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+				
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
 						<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -295,6 +285,7 @@ border-bottom: 1px solid #ebecec !important;
 		</div>
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2">
+			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -360,13 +351,13 @@ border-bottom: 1px solid #ebecec !important;
 							</span>
 							<h4 class="text-section">Components</h4>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active submenu">
 							<a data-toggle="collapse" href="#base">
 								<i class="fas fa-layer-group"></i>
 								<p>Base</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse show" id="base">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
@@ -388,7 +379,7 @@ border-bottom: 1px solid #ebecec !important;
 											<span class="sub-item">Panels</span>
 										</a>
 									</li>
-									<li>
+									<li class="active">
 										<a href="../components/notifications.html">
 											<span class="sub-item">Notifications</span>
 										</a>
@@ -457,15 +448,15 @@ border-bottom: 1px solid #ebecec !important;
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#forms">
 								<i class="fas fa-pen-square"></i>
 								<p>Forms</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="forms">
+							<div class="collapse" id="forms">
 								<ul class="nav nav-collapse">
-									<li class="active">
+									<li>
 										<a href="../forms/forms.html">
 											<span class="sub-item">Basic Form</span>
 										</a>
@@ -546,7 +537,7 @@ border-bottom: 1px solid #ebecec !important;
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Forms</h4>
+						<h4 class="page-title">Notifications</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<a href="#">
@@ -557,201 +548,82 @@ border-bottom: 1px solid #ebecec !important;
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Forms</a>
+								<a href="#">Base</a>
 							</li>
 							<li class="separator">
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Basic Form</a>
+								<a href="#">Notifications</a>
 							</li>
 						</ul>
 					</div>
-<script >
-function IsNonEmpty(ElemID,ResultDiv,Message){
-                    $('#'+ResultDiv).html("");
-                    if ($('#'+ElemID).val()=="" || $('#'+ElemID).val().trim()=="") {
-                        ErrorCount++;
-                        $('#'+ResultDiv).html(Message);  
-                        return false;
-                    }
-                    return true;
-                }
-                
-function submitBranchDetails() {
-                     $('#ErrBranchCode').html("");
-                     $('#ErrBranchName').html("");
-                     $('#ErrAddress').html("");
-                     $('#ErrPincode').html("");
-                     $('#ErrMobileNumber').html("");
-                     $('#ErrWhatsappNumber').html("");
-                     $('#ErrContactPerson').html("");
-                     $('#ErrContactEmailAddress').html("");
-                     $('#ErrContactAddress').html("");
-                     $('#ErrContactPincode').html("");
-                     $('#ErrContactMobileNumber').html("");
-                     $('#ErrLoginPassword').html("");
-                     $('#ErrLoginName').html("");
-                       ErrorCount=0;
-                   IsNonEmpty("BranchCode","ErrBranchCode","Please Enter Valid Branch Code");
-                   IsNonEmpty("BranchName","ErrBranchName","Please Enter Valid Branch Name");
-                   IsNonEmpty("Address","ErrAddress","Please Enter Valid Address");
-                   IsNonEmpty("Pincode","ErrPincode","Please Enter Valid Pincode");
-                   IsNonEmpty("EmailAddress","ErrEmailAddress","Please Enter Valid Email Address");
-                   IsNonEmpty("MobileNumber","ErrMobileNumber","Please Enter Valid Mobile Number");
-                   IsNonEmpty("WhatsappNumber","ErrWhatsappNumber","Please Enter Valid Whatsapp Number");
-                   IsNonEmpty("LandLineNumber","ErrLandLineNumber","Please Enter Valid LandLine Number");
-                   IsNonEmpty("ContactPerson","ErrContactPerson","Please Enter Contact Person Name");
-                   IsNonEmpty("ContactEmailAddress","ErrContactEmailAddress","Please Enter Contact Email Address");
-                   IsNonEmpty("ContactAddress","ErrContactAddress","Please Enter Contact Address");
-                   IsNonEmpty("ContactPincode","ErrContactPincode","Please Enter Contact Pincode");
-                   IsNonEmpty("ContactMobileNumber","ErrContactMobileNumber","Please Enter Contact Mobile Number");
-                   IsNonEmpty("LoginName","ErrLoginName","Please Enter Login Name");
-                   IsNonEmpty("LoginPassword","ErrLoginPassword","Please Enter Login Password");
-                   
-                   if (ErrorCount==0) {
-                            return true;
-                        } else{
-                            return false;
-                        }
-                 }    
-</script>
-				<div class="row">
+					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Add Branch</div>
+									<div class="card-title">Bootstrap Notify</div>
+									<div class="card-category">Turn standard bootstrap alerts into "growl" like notifications from <a class="link" href="https://bootstrap-notify.remabledesigns.com/">Bootstrap Notify</a></div>
 								</div>
 								<div class="card-body">
-									<div class="row">
-										<div class="col-md-12">
-                                            <form method="post" action="" onsubmit="return submitBranchDetails()" >
-											<div class="form-group form-inline">
-                                                 <label for="BranchCode" class="col-sm-2">Branch Code</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="BranchCode"  name="BranchCode" placeholder="Enter Branch Code" style="width:100%">
-                                                    <span class="errorstring" id="ErrBranchCode"><?php echo isset($ErrBranchCode)? $ErrBranchCode : "";?></span>
-                                                </div>
-                                                <label for="BranchName" class="col-sm-2">Branch Name</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="BranchName" name="BranchName" placeholder="Enter Branch Name" style="width:100%">
-                                                    <span class="errorstring" id="ErrBranchName"><?php echo isset($ErrBranchName)? $ErrBranchName : "";?></span>
-                                                </div>
-                                            </div>
-                                            <div class="sub-header">
-                                                <div class="Sub-title">Business Information</div>
-                                            </div>
-                                            <div class="form-group form-inline">
-												 <label for="Address" class="col-sm-2">Address</label>
-                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Enter Address" style="width:100%">
-                                                    <span class="errorstring" id="ErrAddress"><?php echo isset($ErrAddress)? $ErrAddress : "";?>
-                                                 </div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                <label for="Address1" class="col-sm-2">Address</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" id="Address1" name="Address1" placeholder="Enter Address" style="width:100%"></div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                <label for="Address2" class="col-sm-2">Address</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" id="Address2" name="Address2" placeholder="Enter Branch Name" style="width:100%"></div>
+									<div class="form">
+										<div class="form-group form-show-notify row">
+											<div class="col-lg-3 col-md-3 col-sm-4 text-right">
+												<label>Placement :</label>
 											</div>
-                                            <div class="form-group form-inline">
-                                                 <label for="Pincode" class="col-sm-2">Pincode</label>
-                                                <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="Pincode"  name="Pincode" placeholder="Enter Pincode" style="width:100%">
-                                                 <span class="errorstring" id="ErrPincode"><?php echo isset($ErrPincode)? $ErrPincode : "";?>
-                                                </div>
-                                                <label for="EmailAddress" class="col-sm-2">Email Address</label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter Email Address" style="width:100%"> 
-                                                    <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                                    <span class="errorstring" id="ErrEmailAddress"><?php echo isset($ErrEmailAddress)? $ErrEmailAddress : "";?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                 <label for="MobileNumber" class="col-sm-2">Mobile Number</label>
-                                                <div class="col-sm-2">
-                                                    <input type="text" maxlength="10" class="form-control" id="MobileNumber"  name="MobileNumber" placeholder="Enter Mobile Number" style="width:100%">
-                                                     <span class="errorstring" id="ErrMobileNumber"><?php echo isset($ErrMobileNumber)? $ErrMobileNumber : "";?>
-                                                    </div>
-                                                <label for="WhatsappNumber" class="col-sm-2">Whatsapp Number</label>
-                                                <div class="col-sm-2">
-                                                    <input type="text" maxlength="10" class="form-control" id="WhatsappNumber" name="WhatsappNumber" placeholder="Enter Whatsapp Number" style="width:100%">
-                                                    <span class="errorstring" id="ErrWhatsappNumber"><?php echo isset($ErrWhatsappNumber)? $ErrWhatsappNumber : "";?>
-                                                </div>
-                                                <label for="LandLineNumber" class="col-sm-2">Land Line Number</label>
-                                                <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="LandLineNumber" name="LandLineNumber" placeholder="Enter LandLine Number" style="width:100%">
-                                                <span class="errorstring" id="ErrLandLineNumber"><?php echo isset($ErrLandLineNumber)? $ErrLandLineNumber : "";?>
-                                                </div>
-                                            </div>
-                                            <div class="sub-header">
-                                                <div class="Sub-title">Primary contact Information</div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                 <label for="ContactPerson" class="col-sm-2">Contact Person</label>
-                                                <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="ContactPerson"  name="ContactPerson" placeholder="Enter Contact Person" style="width:100%">
-                                                <span class="errorstring" id="ErrContactPerson"><?php echo isset($ErrContactPerson)? $ErrContactPerson : "";?>
-                                                </div>
-                                                <label for="ContactEmailAddress" class="col-sm-2">Email Address</label>
-                                                <div class="col-sm-4"><input type="text" class="form-control" id="ContactEmailAddress" name="ContactEmailAddress" placeholder="Enter Email Address" style="width:100%">
-                                                <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                                <span class="errorstring" id="ErrContactEmailAddress"><?php echo isset($ErrContactEmailAddress)? $ErrContactEmailAddress : "";?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                 <label for="ContactAddress" class="col-sm-2">Address</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="ContactAddress" name="ContactAddress" placeholder="Enter Address" style="width:100%">
-                                                    <span class="errorstring" id="ErrContactAddress"><?php echo isset($ErrContactAddress)? $ErrContactAddress : "";?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                <label for="ContactAddress1" class="col-sm-2">Address</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" id="ContactAddress1" name="ContactAddress1" placeholder="Enter Address" style="width:100%"></div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                <label for="ContactAddress2" class="col-sm-2">Address</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control" id="ContactAddress2" name="ContactAddress2" placeholder="Enter Branch Name" style="width:100%"></div>
-                                            </div>
-                                            <div class="form-group form-inline">
-                                                 <label for="ContactPincode" class="col-sm-2">Pincode</label>
-                                                <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="ContactPincode" maxlength="6"  name="ContactPincode" placeholder="Enter Pincode" style="width:100%">
-                                                    <span class="errorstring" id="ErrContactPincode"><?php echo isset($ErrContactPincode)? $ErrContactPincode : "";?>
-                                                </div>
-                                                <label for="ContactMobileNumber" class="col-sm-2">Mobile Number</label>
-                                                <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="ContactMobileNumber" name="ContactMobileNumber" placeholder="Enter Mobile Number" style="width:100%">
-                                                <span class="errorstring" id="ErrContactMobileNumber"><?php echo isset($ErrContactMobileNumber)? $ErrContactMobileNumber : "";?>
-                                                </div>
-                                            </div>
-                                            <div class="sub-header">
-                                                <div class="Sub-title">Login Details</div>
-                                            </div>
-											<div class="form-group form-inline">
-                                                 <label for="LoginName" class="col-sm-2">Login Name</label>
-                                                <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="LoginName"  name="LoginName" placeholder="Enter Login Name" style="width:100%">
-                                                <span class="errorstring" id="ErrLoginName"><?php echo isset($ErrLoginName)? $ErrLoginName : "";?>
-                                                </div>
-                                                <label for="LoginPassword" class="col-sm-2">Login Password</label>
-                                                <div class="col-sm-4"><input type="text" class="form-control" id="LoginPassword" name="LoginPassword" placeholder="Enter Login Password" style="width:100%">
-                                                <span class="errorstring" id="ErrLoginPassword"><?php echo isset($ErrLoginPassword)? $ErrLoginPassword : "";?>
-                                                </div>
-                                            </div>
-                                            <div class="card-action">
-                                    <button class="btn btn-success" name="btnCreateBranch">Submit</button>
-                                    <button class="btn btn-danger">Cancel</button>
-                                    </form>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<select class="form-control input-fixed" id="notify_placement_from">
+													<option value="top">Top</option>
+													<option value="bottom">Bottom</option>
+												</select>
+												<select class="form-control input-fixed" id="notify_placement_align">
+													<option value="left">Left</option>
+													<option value="right" selected="">Right</option>
+													<option value="center">Center</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group form-show-notify row">
+											<div class="col-lg-3 col-md-3 col-sm-4 text-right">
+												<label>State :</label>
+											</div>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<select class="form-control input-fixed" id="notify_state">
+													<option value="default">Default</option>
+													<option value="primary">Primary</option>
+													<option value="secondary">Secondary</option>
+													<option value="info">Info</option>
+													<option value="success">Success</option>
+													<option value="warning">Warning</option>
+													<option value="danger">Danger</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group form-show-notify row">
+											<div class="col-lg-3 col-md-3 col-sm-4 text-right">
+												<label>Style :</label>
+											</div>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<select class="form-control input-fixed" id="notify_style">
+													<option value="plain">Plain</option>
+													<option value="withicon">With Icon</option>
+												</select>
+											</div>
 										</div>
 									</div>
-                                </div>
 								</div>
-								
-                                
+								<div class="card-footer">
+									<div class="form">
+										<div class="form-group from-show-notify row">
+											<div class="col-lg-3 col-md-3 col-sm-12">
+
+											</div>
+											<div class="col-lg-4 col-md-9 col-sm-12">
+												<button id="displayNotif" class="btn btn-success">Display</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -864,6 +736,8 @@ function submitBranchDetails() {
 	<!-- jQuery UI -->
 	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<!-- Bootstrap Notify -->
+	<script src="../../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 	
 	<!-- jQuery Scrollbar -->
 	<script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
@@ -871,5 +745,34 @@ function submitBranchDetails() {
 	<script src="../../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="../../assets/js/setting-demo2.js"></script>
+	<script>
+		$('#displayNotif').on('click', function(){
+			var placementFrom = $('#notify_placement_from option:selected').val();
+			var placementAlign = $('#notify_placement_align option:selected').val();
+			var state = $('#notify_state option:selected').val();
+			var style = $('#notify_style option:selected').val();
+			var content = {};
+
+			content.message = 'Turning standard Bootstrap alerts into "notify" like notifications';
+			content.title = 'Bootstrap notify';
+			if (style == "withicon") {
+				content.icon = 'fa fa-bell';
+			} else {
+				content.icon = 'none';
+			}
+			content.url = 'index.html';
+			content.target = '_blank';
+
+			$.notify(content,{
+				type: state,
+				placement: {
+					from: placementFrom,
+					align: placementAlign
+				},
+				time: 1000,
+				delay: 0,
+			});
+		});
+	</script>
 </body>
 </html>

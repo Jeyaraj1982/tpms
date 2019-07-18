@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Forms - Atlantis Lite Bootstrap 4 Admin Dashboard</title>
+	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon"/>
 	
@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="../../assets/css/demo.css">
 </head>
 <body>
-	<div class="wrapper sidebar_minimize">
+	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
@@ -48,7 +48,8 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">			
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+				
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
 						<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -284,6 +285,7 @@
 		</div>
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2">
+			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -349,13 +351,13 @@
 							</span>
 							<h4 class="text-section">Components</h4>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active submenu">
 							<a data-toggle="collapse" href="#base">
 								<i class="fas fa-layer-group"></i>
 								<p>Base</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse show" id="base">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
@@ -372,7 +374,7 @@
 											<span class="sub-item">Grid System</span>
 										</a>
 									</li>
-									<li>
+									<li class="active">
 										<a href="../components/panels.html">
 											<span class="sub-item">Panels</span>
 										</a>
@@ -446,15 +448,15 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#forms">
 								<i class="fas fa-pen-square"></i>
 								<p>Forms</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="forms">
+							<div class="collapse" id="forms">
 								<ul class="nav nav-collapse">
-									<li class="active">
+									<li>
 										<a href="../forms/forms.html">
 											<span class="sub-item">Basic Form</span>
 										</a>
@@ -535,7 +537,7 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Forms</h4>
+						<h4 class="page-title">Panels</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<a href="#">
@@ -546,460 +548,245 @@
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Forms</a>
+								<a href="#">Base</a>
 							</li>
 							<li class="separator">
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Basic Form</a>
+								<a href="#">Panels</a>
 							</li>
 						</ul>
 					</div>
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-6">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Form Elements</div>
+									<h4 class="card-title">Nav Pills (Horizontal Tabs)</h4>
+								</div>
+								<div class="card-body">
+									<ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+										</li>
+									</ul>
+									<div class="tab-content mt-2 mb-3" id="pills-tabContent">
+										<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+
+											<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										</div>
+										<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+											<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+											<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+											</p>
+										</div>
+										<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+											<p>Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+
+											<p> But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Nav Pills (Vertical Tabs)</h4>
 								</div>
 								<div class="card-body">
 									<div class="row">
-										<div class="col-md-6 col-lg-4">
-											<div class="form-group">
-												<label for="email2">Email Address</label>
-												<input type="email" class="form-control" id="email2" placeholder="Enter Email">
-												<small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
+										<div class="col-5 col-md-4">
+											<div class="nav flex-column nav-pills nav-secondary" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+												<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+												<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+												<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
 											</div>
-											<div class="form-group">
-												<label for="password">Password</label>
-												<input type="password" class="form-control" id="password" placeholder="Password">
-											</div>
-											<div class="form-group form-inline">
-												<label for="inlineinput" class="col-md-3 col-form-label">Inline Input</label>
-												<div class="col-md-9 p-0">
-													<input type="text" class="form-control input-full" id="inlineinput" placeholder="Enter Input">
-												</div>
-											</div>
-											<div class="form-group has-success">
-												<label for="successInput">Success Input</label>
-												<input type="text" id="successInput" value="Success" class="form-control">
-											</div>
-											<div class="form-group has-error has-feedback">
-												<label for="errorInput">Error Input</label>
-												<input type="text" id="errorInput" value="Error" class="form-control">
-												<small id="emailHelp" class="form-text text-muted">Please provide a valid informations.</small>
-											</div>
-											<div class="form-group">
-												<label for="disableinput">Disable Input</label>
-												<input type="text" class="form-control" id="disableinput" placeholder="Enter Input" disabled>
-											</div>
-											<div class="form-check">
-												<label>Gender</label><br/>
-												<label class="form-radio-label">
-													<input class="form-radio-input" type="radio" name="optionsRadios" value=""  checked="">
-													<span class="form-radio-sign">Male</span>
-												</label>
-												<label class="form-radio-label ml-3">
-													<input class="form-radio-input" type="radio" name="optionsRadios" value="">
-													<span class="form-radio-sign">Female</span>
-												</label>
-											</div>
-											<div class="form-group">
-												<label class="control-label">
-													Static
-												</label> 
-												<p class="form-control-static">hello@example.com</p> 
-											</div>
-											<div class="form-group">
-												<label for="exampleFormControlSelect1">Example select</label>
-												<select class="form-control" id="exampleFormControlSelect1">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label for="exampleFormControlSelect2">Example multiple select</label>
-												<select multiple class="form-control" id="exampleFormControlSelect2">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label for="exampleFormControlFile1">Example file input</label>
-												<input type="file" class="form-control-file" id="exampleFormControlFile1">
-											</div>
-											<div class="form-group">
-												<label for="comment">Comment</label>
-												<textarea class="form-control" id="comment" rows="5">
+										</div>
+										<div class="col-7 col-md-8">
+											<div class="tab-content" id="v-pills-tabContent">
+												<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+													<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 
-												</textarea>
-											</div>
-											<div class="form-check">
-												<label class="form-check-label">
-													<input class="form-check-input" type="checkbox" value="">
-													<span class="form-check-sign">Agree with terms and conditions</span>
-												</label>
-											</div>
-										</div>
-										<div class="col-md-6 col-lg-4">				
-											<div class="form-group">
-												<div class="input-group mb-3">
-													<div class="input-group-prepend">
-														<span class="input-group-text" id="basic-addon1">@</span>
-													</div>
-													<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+													<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group mb-3">
-													<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-													<div class="input-group-append">
-														<span class="input-group-text" id="basic-addon2">@example.com</span>
-													</div>
+												<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+													<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+													<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+													</p>
 												</div>
-											</div>
-											<div class="form-group">
-												<label for="basic-url">Your vanity URL</label>
-												<div class="input-group mb-3">
-													<div class="input-group-prepend">
-														<span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-													</div>
-													<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+												<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+													<p>Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+
+													<p> But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their</p>
 												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group mb-3">
-													<div class="input-group-prepend">
-														<span class="input-group-text">$</span>
-													</div>
-													<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-													<div class="input-group-append">
-														<span class="input-group-text">.00</span>
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<span class="input-group-text">With textarea</span>
-													</div>
-													<textarea class="form-control" aria-label="With textarea"></textarea>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<div class="input-group-prepend">
-														<button class="btn btn-default btn-border" type="button">Button</button>
-													</div>
-													<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-group">
-													<input type="text" class="form-control" aria-label="Text input with dropdown button">
-													<div class="input-group-append">
-														<button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-														<div class="dropdown-menu">
-															<a class="dropdown-item" href="#">Action</a>
-															<a class="dropdown-item" href="#">Another action</a>
-															<a class="dropdown-item" href="#">Something else here</a>
-															<div role="separator" class="dropdown-divider"></div>
-															<a class="dropdown-item" href="#">Separated link</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-icon">
-													<input type="text" class="form-control" placeholder="Search for...">
-													<span class="input-icon-addon">
-														<i class="fa fa-search"></i>
-													</span>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="input-icon">
-													<span class="input-icon-addon">
-														<i class="fa fa-user"></i>
-													</span>
-													<input type="text" class="form-control" placeholder="Username">
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Image Check</label>
-												<div class="row">
-													<div class="col-6 col-sm-4">
-														<label class="imagecheck mb-4">
-															<input name="imagecheck" type="checkbox" value="1" class="imagecheck-input">
-															<figure class="imagecheck-figure">
-																<img src="../../assets/img/examples/product1.jpg" alt="title" class="imagecheck-image">
-															</figure>
-														</label>
-													</div>
-													<div class="col-6 col-sm-4">
-														<label class="imagecheck mb-4">
-															<input name="imagecheck" type="checkbox" value="2" class="imagecheck-input" checked="">
-															<figure class="imagecheck-figure">
-																<img src="../../assets/img/examples/product4.jpg" alt="title" class="imagecheck-image">
-															</figure>
-														</label>
-													</div>
-													<div class="col-6 col-sm-4">
-														<label class="imagecheck mb-4">
-															<input name="imagecheck" type="checkbox" value="3" class="imagecheck-input">
-															<figure class="imagecheck-figure">
-																<img src="../../assets/img/examples/product3.jpg" alt="title" class="imagecheck-image">
-															</figure>
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Color Input</label>
-												<div class="row gutters-xs">
-													<div class="col-auto">
-														<label class="colorinput">
-															<input name="color" type="checkbox" value="dark" class="colorinput-input">
-															<span class="colorinput-color bg-dark"></span>
-														</label>
-													</div>
-													<div class="col-auto">
-														<label class="colorinput">
-															<input name="color" type="checkbox" value="primary" class="colorinput-input">
-															<span class="colorinput-color bg-primary"></span>
-														</label>
-													</div>
-													<div class="col-auto">
-														<label class="colorinput">
-															<input name="color" type="checkbox" value="secondary" class="colorinput-input">
-															<span class="colorinput-color bg-secondary"></span>
-														</label>
-													</div>
-													<div class="col-auto">
-														<label class="colorinput">
-															<input name="color" type="checkbox" value="info" class="colorinput-input">
-															<span class="colorinput-color bg-info"></span>
-														</label>
-													</div>
-													<div class="col-auto">
-														<label class="colorinput">
-															<input name="color" type="checkbox" value="success" class="colorinput-input">
-															<span class="colorinput-color bg-success"></span>
-														</label>
-													</div>
-													<div class="col-auto">
-														<label class="colorinput">
-															<input name="color" type="checkbox" value="danger" class="colorinput-input">
-															<span class="colorinput-color bg-danger"></span>
-														</label>
-													</div>
-													<div class="col-auto">
-														<label class="colorinput">
-															<input name="color" type="checkbox" value="warning" class="colorinput-input">
-															<span class="colorinput-color bg-warning"></span>
-														</label>
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Size</label>
-												<div class="selectgroup w-100">
-													<label class="selectgroup-item">
-														<input type="radio" name="value" value="50" class="selectgroup-input" checked="">
-														<span class="selectgroup-button">S</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="value" value="100" class="selectgroup-input">
-														<span class="selectgroup-button">M</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="value" value="150" class="selectgroup-input">
-														<span class="selectgroup-button">L</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="value" value="200" class="selectgroup-input">
-														<span class="selectgroup-button">XL</span>
-													</label>
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Icons input</label>
-												<div class="selectgroup w-100">
-													<label class="selectgroup-item">
-														<input type="radio" name="transportation" value="2" class="selectgroup-input">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="icon-screen-smartphone"></i></span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="transportation" value="1" class="selectgroup-input" checked="">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="icon-screen-tablet"></i></span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="transportation" value="6" class="selectgroup-input">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="icon-screen-desktop"></i></span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="transportation" value="6" class="selectgroup-input">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-times"></i></span>
-													</label>
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="form-label d-block">Icon input</label>
-												<div class="selectgroup selectgroup-secondary selectgroup-pills">
-													<label class="selectgroup-item">
-														<input type="radio" name="icon-input" value="1" class="selectgroup-input" checked="">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-sun"></i></span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="icon-input" value="2" class="selectgroup-input">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-moon"></i></span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="icon-input" value="3" class="selectgroup-input">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-tint"></i></span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="radio" name="icon-input" value="4" class="selectgroup-input">
-														<span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-cloud"></i></span>
-													</label>
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Your skills</label>
-												<div class="selectgroup selectgroup-pills">
-													<label class="selectgroup-item">
-														<input type="checkbox" name="value" value="HTML" class="selectgroup-input" checked="">
-														<span class="selectgroup-button">HTML</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="checkbox" name="value" value="CSS" class="selectgroup-input">
-														<span class="selectgroup-button">CSS</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="checkbox" name="value" value="PHP" class="selectgroup-input">
-														<span class="selectgroup-button">PHP</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="checkbox" name="value" value="JavaScript" class="selectgroup-input">
-														<span class="selectgroup-button">JavaScript</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="checkbox" name="value" value="Ruby" class="selectgroup-input">
-														<span class="selectgroup-button">Ruby</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="checkbox" name="value" value="Ruby" class="selectgroup-input">
-														<span class="selectgroup-button">Ruby</span>
-													</label>
-													<label class="selectgroup-item">
-														<input type="checkbox" name="value" value="C++" class="selectgroup-input">
-														<span class="selectgroup-button">C++</span>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6 col-lg-4">
-											<label class="mb-3"><b>Form Group Default</b></label>
-											<div class="form-group form-group-default">
-												<label>Input</label>
-												<input id="Name" type="text" class="form-control" placeholder="Fill Name">
-											</div>
-											<div class="form-group form-group-default">
-												<label>Select</label>
-												<select class="form-control" id="formGroupDefaultSelect">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-											</div>
-											<label class="mt-3 mb-3"><b>Form Floating Label</b></label>
-											<div class="form-group form-floating-label">
-												<input id="inputFloatingLabel" type="text" class="form-control input-border-bottom" required>
-												<label for="inputFloatingLabel" class="placeholder">Input</label>
-											</div>
-											<div class="form-group form-floating-label">
-												<select class="form-control input-border-bottom" id="selectFloatingLabel" required>
-													<option value="">&nbsp;</option>
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-												<label for="selectFloatingLabel" class="placeholder">Select</label>
-											</div>
-											<div class="form-group form-floating-label">
-												<input id="inputFloatingLabel2" type="text" class="form-control input-solid" required>
-												<label for="inputFloatingLabel2" class="placeholder">Input</label>
-											</div>
-											<div class="form-group form-floating-label">
-												<select class="form-control input-solid" id="selectFloatingLabel2" required>
-													<option value="">&nbsp;</option>
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-												<label for="selectFloatingLabel2" class="placeholder">Select</label>
-											</div>
-											
-											<div class="form-group">
-												<label for="largeInput">Large Input</label>
-												<input type="text" class="form-control form-control-lg" id="largeInput" placeholder="Large Input">
-											</div>
-											<div class="form-group">
-												<label for="largeInput">Default Input</label>
-												<input type="text" class="form-control form-control" id="defaultInput" placeholder="Default Input">
-											</div>
-											<div class="form-group">
-												<label for="smallInput">Small Input</label>
-												<input type="text" class="form-control form-control-sm" id="smallInput" placeholder="Small Input">
-											</div>
-											<div class="form-group">
-												<label for="largeSelect">Large Select</label>
-												<select class="form-control form-control-lg" id="largeSelect">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label for="defaultSelect">Default Select</label>
-												<select class="form-control form-control" id="defaultSelect">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label for="smallSelect">Small Select</label>
-												<select class="form-control form-control-sm" id="smallSelect">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="card-action">
-									<button class="btn btn-success">Submit</button>
-									<button class="btn btn-danger">Cancel</button>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Nav Pills Without Border (Horizontal Tabs)</h4>
+								</div>
+								<div class="card-body">
+									<ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" id="pills-home-tab-nobd" data-toggle="pill" href="#pills-home-nobd" role="tab" aria-controls="pills-home-nobd" aria-selected="true">Home</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-profile-tab-nobd" data-toggle="pill" href="#pills-profile-nobd" role="tab" aria-controls="pills-profile-nobd" aria-selected="false">Profile</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-contact-tab-nobd" data-toggle="pill" href="#pills-contact-nobd" role="tab" aria-controls="pills-contact-nobd" aria-selected="false">Contact</a>
+										</li>
+									</ul>
+									<div class="tab-content mt-2 mb-3" id="pills-without-border-tabContent">
+										<div class="tab-pane fade show active" id="pills-home-nobd" role="tabpanel" aria-labelledby="pills-home-tab-nobd">
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+
+											<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										</div>
+										<div class="tab-pane fade" id="pills-profile-nobd" role="tabpanel" aria-labelledby="pills-profile-tab-nobd">
+											<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+											<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+											</p>
+										</div>
+										<div class="tab-pane fade" id="pills-contact-nobd" role="tabpanel" aria-labelledby="pills-contact-tab-nobd">
+											<p>Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+
+											<p> But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Nav Pills Without Border (Vertical Tabs)</h4>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5 col-md-4">
+											<div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd" id="v-pills-tab-without-border" role="tablist" aria-orientation="vertical">
+												<a class="nav-link active" id="v-pills-home-tab-nobd" data-toggle="pill" href="#v-pills-home-nobd" role="tab" aria-controls="v-pills-home-nobd" aria-selected="true">Home</a>
+												<a class="nav-link" id="v-pills-profile-tab-nobd" data-toggle="pill" href="#v-pills-profile-nobd" role="tab" aria-controls="v-pills-profile-nobd" aria-selected="false">Profile</a>
+												<a class="nav-link" id="v-pills-messages-tab-nobd" data-toggle="pill" href="#v-pills-messages-nobd" role="tab" aria-controls="v-pills-messages-nobd" aria-selected="false">Messages</a>
+											</div>
+										</div>
+										<div class="col-7 col-md-8">
+											<div class="tab-content" id="v-pills-without-border-tabContent">
+												<div class="tab-pane fade show active" id="v-pills-home-nobd" role="tabpanel" aria-labelledby="v-pills-home-tab-nobd">
+													<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+
+													<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+												</div>
+												<div class="tab-pane fade" id="v-pills-profile-nobd" role="tabpanel" aria-labelledby="v-pills-profile-tab-nobd">
+													<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+													<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+													</p>
+												</div>
+												<div class="tab-pane fade" id="v-pills-messages-nobd" role="tabpanel" aria-labelledby="v-pills-messages-tab-nobd">
+													<p>Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+
+													<p> But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Nav Pills With Icon (Horizontal Tabs)</h4>
+								</div>
+								<div class="card-body">
+									<ul class="nav nav-pills nav-secondary  nav-pills-no-bd nav-pills-icons justify-content-center" id="pills-tab-with-icon" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" id="pills-home-tab-icon" data-toggle="pill" href="#pills-home-icon" role="tab" aria-controls="pills-home-icon" aria-selected="true">
+												<i class="flaticon-home"></i>
+												Home
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-profile-tab-icon" data-toggle="pill" href="#pills-profile-icon" role="tab" aria-controls="pills-profile-icon" aria-selected="false">
+												<i class="flaticon-user-4"></i>
+												Profile
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-contact-tab-icon" data-toggle="pill" href="#pills-contact-icon" role="tab" aria-controls="pills-contact-icon" aria-selected="false">
+												<i class="flaticon-mailbox"></i>
+												Contact
+											</a>
+										</li>
+									</ul>
+									<div class="tab-content mt-2 mb-3" id="pills-with-icon-tabContent">
+										<div class="tab-pane fade show active" id="pills-home-icon" role="tabpanel" aria-labelledby="pills-home-tab-icon">
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+
+											<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										</div>
+										<div class="tab-pane fade" id="pills-profile-icon" role="tabpanel" aria-labelledby="pills-profile-tab-icon">
+											<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+											<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+											</p>
+										</div>
+										<div class="tab-pane fade" id="pills-contact-icon" role="tabpanel" aria-labelledby="pills-contact-tab-icon">
+											<p>Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+
+											<p> But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Nav Pills With Icon (Vertical Tabs)</h4>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5 col-md-4">
+											<div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd nav-pills-icons" id="v-pills-tab-with-icon" role="tablist" aria-orientation="vertical">
+												<a class="nav-link active" id="v-pills-home-tab-icons" data-toggle="pill" href="#v-pills-home-icons" role="tab" aria-controls="v-pills-home-icons" aria-selected="true">
+													<i class="flaticon-home"></i>
+													Home
+												</a>
+												<a class="nav-link" id="v-pills-profile-tab-icons" data-toggle="pill" href="#v-pills-profile-icons" role="tab" aria-controls="v-pills-profile-icons" aria-selected="false">
+													<i class="flaticon-user-4"></i>
+													Profile
+												</a>
+											</div>
+										</div>
+										<div class="col-7 col-md-8">
+											<div class="tab-content" id="v-pills-with-icon-tabContent">
+												<div class="tab-pane fade show active" id="v-pills-home-icons" role="tabpanel" aria-labelledby="v-pills-home-tab-icons">
+													<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+
+													<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+												</div>
+												<div class="tab-pane fade" id="v-pills-profile-icons" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
+													<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+													<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
