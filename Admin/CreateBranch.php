@@ -2,28 +2,7 @@
     <div class="main-panel">
         <div class="content">
             <div class="page-inner">
-                <div class="page-header">
-                    <h4 class="page-title">Forms</h4>
-                    <ul class="breadcrumbs">
-                        <li class="nav-home">
-                            <a href="#">
-                                <i class="flaticon-home"></i>
-                            </a>
-                        </li>
-                        <li class="separator">
-                            <i class="flaticon-right-arrow"></i>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#">Forms</a>
-                        </li>
-                        <li class="separator">
-                            <i class="flaticon-right-arrow"></i>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#">Basic Form</a>
-                        </li>
-                    </ul>
-                </div>
+                 
 <script>
  $(document).ready(function () {
   $("#MobileNumber").keypress(function (e) {
@@ -151,7 +130,6 @@
                                                 <label for="EmailAddress" class="col-sm-2">Email Address</label>
                                                 <div class="col-sm-4">
                                                     <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter Email Address" style="width:100%"> 
-                                                    <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                                     <span class="errorstring" id="ErrEmailAddress"><?php echo isset($ErrEmailAddress)? $ErrEmailAddress : "";?>
                                                 </div>
                                             </div>
@@ -183,7 +161,6 @@
                                                 </div>
                                                 <label for="ContactEmailAddress" class="col-sm-2">Email Address</label>
                                                 <div class="col-sm-4"><input type="text" class="form-control" id="ContactEmailAddress" name="ContactEmailAddress" placeholder="Enter Email Address" style="width:100%">
-                                                <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                                 <span class="errorstring" id="ErrContactEmailAddress"><?php echo isset($ErrContactEmailAddress)? $ErrContactEmailAddress : "";?>
                                                 </div>
                                             </div>

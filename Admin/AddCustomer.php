@@ -2,28 +2,7 @@
     <div class="main-panel">
         <div class="content">
             <div class="page-inner">
-                <div class="page-header">
-                    <h4 class="page-title">Forms</h4>
-                    <ul class="breadcrumbs">
-                        <li class="nav-home">
-                            <a href="#">
-                                <i class="flaticon-home"></i>
-                            </a>
-                        </li>
-                        <li class="separator">
-                            <i class="flaticon-right-arrow"></i>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#">Forms</a>
-                        </li>
-                        <li class="separator">
-                            <i class="flaticon-right-arrow"></i>
-                        </li>
-                        <li class="nav-item">                                                              
-                            <a href="#">Basic Form</a>
-                        </li>
-                    </ul>
-                </div>
+                 
 <script>
              function submitCustomerDetails() {
                  
@@ -70,7 +49,7 @@
                                         <div class="col-md-12">
                                         <form method="post" action="" onsubmit="return submitCustomerDetails()">
                                             <div class="form-group form-inline">
-                                                 <label for="CustomerCode" class="col-sm-2">Customer Code</label>
+                                                 <label for="CustomerCode" class="col-sm-2" style="text-align:left">Customer Code</label>
                                                 <div class="col-sm-4">
                                                     <input type="text" class="form-control" id="CustomerCode"  name="CustomerCode" placeholder="Enter Customer Code" style="width:100%">
                                                     <span class="errorstring" id="ErrCustomerCode"><?php echo isset($ErrCustomerCode)? $ErrCustomerCode : "";?></span>
@@ -94,7 +73,6 @@
                                                 <label for="ContactEmailAddress" class="col-sm-2">Email Address</label>
                                                 <div class="col-sm-4">
                                                 <input type="text" class="form-control" id="ContactEmailAddress" name="ContactEmailAddress" placeholder="Enter Email Address" style="width:100%">
-                                                <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                                 <span class="errorstring" id="ErrContactEmailAddress"><?php echo isset($ErrContactEmailAddress)? $ErrContactEmailAddress : "";?></span>
                                                 </div>
                                             </div>
@@ -125,7 +103,7 @@
                                                 <span class="errorstring" id="ErrReferedBy"><?php echo isset($ErrBranchCode)? $ErrReferedBy : "";?></span>
                                                 </div>
                                             </div>
-                                            <div class="card-action">
+                                            <div class="card-action" style="text-align:right">
                                     <button class="btn btn-success" name="CreateCustomer">Create</button>
                                     <button class="btn btn-danger">Cancel</button>
                                 </div>
