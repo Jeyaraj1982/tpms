@@ -21,27 +21,30 @@
                                             <th>Customer Code</th>
                                             <th>Customer Name</th>
                                             <th>Mobile Number</th>
-                                            <th>Create On</th>
-                                            <th>Create By</th>
+                                            <th>Created On</th>
+                                            <th>Created By</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $Customers = $mysql->select("select * from _tbl_customers"); ?>
+                                    <?php foreach($Customers as $Customer) { ?>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php echo $Customer['CustomerCode'];?></td>
+                                            <td><?php echo $Customer['CustomerName'];?></td>
+                                            <td><?php echo $Customer['MobileNumber'];?></td>
+                                            <td><?php echo putDateTime($Customer['CreatedOn']);?></td>    
+                                            <td><?php echo $Customer['CreatedBy'];?></td>
                                             <td><div class="form-button-action">
-                                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </div></td>
+                                                <a href="EditCustomer.php?CusCode=<?php echo $Customer["CustomerCode"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 0px;">
+                                                    <i class="fa fa-edit"></i>
+                                                </a> &nbsp;&nbsp;
+                                                <a href="ViewCustomerDetails.php?CusCode=<?php echo $Customer["CustomerCode"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 0px;" >
+                                                    <i class="fa fa-list-alt"></i>
+                                                </a>
+                                                </div></td>
                                                 </tr>
+                                            <?php }?>
                                             </tbody>
                                         </table>
                                     </div>

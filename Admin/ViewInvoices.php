@@ -27,11 +27,11 @@
                         <tbody>
                         <?php
                              if (isset($_GET['filter']) && $_GET['filter']=="Paid")  {
-                               $Invoices = $mysql->select("select * from _tbl_invoices where  CreatedBy='".$_SESSION['User']['BranchID']."' and BalanceAmount='0'  order by  OrderID desc"); 
+                               $Invoices = $mysql->select("select * from _tbl_invoices where   BalanceAmount='0'  order by  OrderID desc"); 
                                 } else if (isset($_GET['filter']) && $_GET['filter']=="Unpaid")  {
-                               $Invoices = $mysql->select("select * from _tbl_invoices where  CreatedBy='".$_SESSION['User']['BranchID']."' and BalanceAmount>'0'  order by  OrderID desc"); 
+                               $Invoices = $mysql->select("select * from _tbl_invoices where   BalanceAmount>'0'  order by  OrderID desc"); 
                                 } else {
-                               $Invoices = $mysql->select("select * from _tbl_invoices where  CreatedBy='".$_SESSION['User']['BranchID']."'  order by  OrderID desc"); 
+                               $Invoices = $mysql->select("select * from _tbl_invoices    order by  OrderID desc"); 
                                 }
                           ?>
                         <?php foreach($Invoices as $invoice) { ?>

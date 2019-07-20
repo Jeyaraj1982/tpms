@@ -1,4 +1,4 @@
-  <?php  include_once("header.php");?>
+ <?php  include_once("header.php");?>
         <div class="main-panel">
             <div class="content">
                 <div class="page-inner">
@@ -6,10 +6,10 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Branch Wise Outstanding</h4>
+                                        <h4 class="card-title">Invoices</h4>
                                      </div>
                                 </div>
-                                 <p align="center"> No records found</p>
+                                <p align="center"> No records found</p>
                             </div>
                         </div>
                     </div>

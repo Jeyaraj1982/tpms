@@ -1,6 +1,4 @@
-<?php
-include_once("../config.php");
-?>
+<?php include_once("../config.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,11 +38,11 @@ include_once("../config.php");
     }
 </style>
 <?php
-if (isset($_SESSION['User']) && $_SESSION['User']['AdminID']>0) {
+ if (isset($_SESSION['User']) && $_SESSION['User']['AdminID']>0) {
     echo "<script>location.href='dashboard.php';</script>";
-}
+} 
 if (isset($_POST['btnLogin'])) {
-    $d=$mysql->select("select * from _tbl_admin where UserName='".$_POST['UserName']."' and Password='".$_POST['Password']."'");
+    $d=$mysql->select("select * from `_tbl_admin` where `UserName`='".$_POST['UserName']."' and `UserPassword`='".$_POST['Password']."'");
     if (sizeof($d)>0) {
           $_SESSION['User']=$d[0];
           echo "<script>location.href='dashboard.php';</script>";
@@ -52,7 +50,7 @@ if (isset($_POST['btnLogin'])) {
         $error = "invalid username or password";
     }
 }
-?>
+?>                         
 <body>
     <div class="main-panel" style="width:100% !important">
         <div class="content" style="margin-top:0px;">

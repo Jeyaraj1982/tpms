@@ -1,90 +1,102 @@
-   <?php  include_once("header.php");?>
-    <script >
-        $(document).ready(function() {
-            $('#basic-datatables').DataTable({
-            });
+    <?php include_once("header.php");?>
+<?php
 
-            $('#multi-filter-select').DataTable( {
-                "pageLength": 5,
-                initComplete: function () {
-                    this.api().columns().every( function () {
-                        var column = this;
-                        var select = $('<select class="form-control"><option value=""></option></select>')
-                        .appendTo( $(column.footer()).empty() )
-                        .on( 'change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                                );
+if (isset($_POST['ChangePassword'])) {
+                    echo "qq";
+$getpassword = $mysql->select("select * from _tbl_branches where BranchID='".$_SESSION['User']['BranchID']."'");
+ echo "aa";
+             if ($getpassword[0]['UserPassword']!=$_POST['CurrentPassword']) {
+                 echo "bb";
+                 $ErrCurrentPassword="Incorrect Current password"; 
+             } 
+             if ($getpassword[0]['UserPassword']==$_POST['CurrentPassword']) {
+                 $mysql->execute("update _tbl_branches set UserPassword='".$_POST['ConfirmNewPassword']."' where BranchID='".$_SESSION['User']['BranchID']."'");
+                $successMessage = "Password changed  successfully";
+                unset($_POST);
+        } else {
+            $errorMessage =  "Some error occured, couldn't be change password";
+        }
+}
 
-                            column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                        } );
+?> 
+<script>
+     function submitPassword() {
+         
+                $('#ErrCurrentPassword').html("");
+                $('#ErrNewPassword').html("");
+                $('#ErrConfirmNewPassword').html("");
+                
+                ErrorCount = 0;                                                                                               
+                
+                IsNonEmpty("CurrentPassword", "ErrCurrentPassword", "Please Enter Current Password");
+                IsNonEmpty("NewPassword", "ErrNewPassword", "Please Enter New Password");
+                IsNonEmpty("ConfirmNewPassword", "ErrConfirmNewPassword", "Please Enter Confirm New Password");
+                
+                 var password = document.getElementById("NewPassword").value;
+                 var confirmPassword = document.getElementById("ConfirmNewPassword").value;
+                  if (password != confirmPassword) {
+                  ErrorCount++;
+                  $('#ErrConfirmNewPassword').html("Passwords do not match.");
+                  }
 
-                        column.data().unique().sort().each( function ( d, j ) {
-                            select.append( '<option value="'+d+'">'+d+'</option>' )
-                        } );
-                    } );
-                }
-            });
+                  return (ErrorCount==0) ? true : false;
+    }
 
-            // Add Row
-            $('#add-row').DataTable({
-                "pageLength": 5,
-            });
-
-            var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-            $('#addRowButton').click(function() {
-                $('#add-row').dataTable().fnAddData([
-                    $("#addName").val(),
-                    $("#addPosition").val(),
-                    $("#addOffice").val(),
-                    action
-                    ]);
-                $('#addRowModal').modal('hide');                                                                
-
-            });
-        });
-    </script>
-
-        <div class="main-panel">
-            <div class="content">
-                <div class="page-inner">
-                    <div class="page-header">
-                        <h4 class="page-title">Forms</h4>
-                        <ul class="breadcrumbs">
-                            <li class="nav-home">
-                                <a href="#">
-                                    <i class="flaticon-home"></i>
-                                </a>
-                            </li>
-                            <li class="separator">
-                                <i class="flaticon-right-arrow"></i>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">Forms</a>
-                            </li>
-                            <li class="separator">
-                                <i class="flaticon-right-arrow"></i>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">Basic Form</a>
-                            </li>
-                        </ul>
-                    </div>
-                <div class="col-md-12">
-                            <div class="card">
+</script>
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
                                 <div class="card-header">
-                                    <div class="d-flex align-items-center">
-                                        <h4 class="card-title">Change Password</h4>
-                                     </div>
+                                    <div class="card-title">Change Passwords</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-inline">
+                                                 <div class="col-md-12"  style="text-align:left">
+                                                    <span class="successmessage"><?php echo $successMessage; ?></span>
+                                                    <span class="errormessage"><?php echo $errorMessage; ?></span>
+                                                 </div>
+                                            </div>
+                                        <form method="post" action="" onsubmit="return submitPassword();">
+                                            <div class="form-group form-inline">
+                                                 <div class="col-sm-2" style="text-align:left">Current Password<span id="star">*</span></div>
+                                                <div class="col-sm-4">                                                                                                              
+                                                    <input type="password" class="form-control" id="CurrentPassword"  name="CurrentPassword" placeholder="Enter Current Password" style="width:100%" value="<?php echo (isset($_POST['CurrentPassword']) ? $_POST['CurrentPassword'] : "");?>">
+                                                    <span class="errorstring" id="ErrCurrentPassword"><?php echo isset($ErrCurrentPassword)? $ErrCurrentPassword : "";?></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-inline">
+                                                <div class="col-sm-2">New Password<span id="star">*</span></div>
+                                                <div class="col-sm-4">
+                                                <input type="password" class="form-control" id="NewPassword" name="NewPassword" placeholder="Enter New Password" value="<?php echo (isset($_POST['NewPassword']) ? $_POST['NewPassword'] : "");?>" style="width:100%">
+                                                <span class="errorstring" id="ErrNewPassword"><?php echo isset($ErrNewPassword)? $ErrNewPassword : "";?></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-inline">
+                                                <div class="col-sm-2">Current Password<span id="star">*</span></div>
+                                                <div class="col-sm-4">
+                                                <input type="password" class="form-control" id="ConfirmNewPassword" name="ConfirmNewPassword" placeholder="Enter Confirm Password" value="<?php echo (isset($_POST['ConfirmNewPassword']) ? $_POST['ConfirmNewPassword'] : "");?>" style="width:100%">
+                                                <span class="errorstring" id="ErrConfirmNewPassword"><?php echo isset($ErrConfirmNewPassword)? $ErrConfirmNewPassword : "";?></span>
+                                                </div>
+                                            </div>
+                                            <div class="card-action" style="text-align:right">
+                                    <button class="btn btn-success" name="ChangePassword">Change Password</button>
+                                    <a href="ManageProduct.php" class="btn btn-danger">Cancel</a>
+                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-<?php  include_once("footer.php");?>
+
+<?php include_once("footer.php");?>

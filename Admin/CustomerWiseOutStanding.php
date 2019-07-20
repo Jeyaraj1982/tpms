@@ -9,7 +9,7 @@
                                         <h4 class="card-title">Customer Wise Outstanding</h4>
                                      </div>
                                 </div>
-                                
+                                 <p align="center"> No records found</p>
                             </div>
                         </div>
                     </div>

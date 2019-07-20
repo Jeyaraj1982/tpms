@@ -6,7 +6,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <h4 class="card-title">View Booking</h4>
+                                        <h4 class="card-title">View Orders</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">

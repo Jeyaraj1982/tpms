@@ -1,3 +1,10 @@
+<?php
+include_once("../config.php");
+   if (isset($_SESSION['User']) && $_SESSION['User']['BranchID']>0) {
+} else {
+     echo "<script>location.href='index.php';</script>"; 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +41,9 @@ border-bottom: 1px solid #ebecec !important;
 .errorstring{
     color:red;
 }
+#star{
+    color: red;
+}
 </style>
 <body>
 	<div class="wrapper ">
@@ -53,24 +63,21 @@ border-bottom: 1px solid #ebecec !important;
 									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
-							<ul class="dropdown-menu dropdown-user animated fadeIn">
+							<ul class="dropdown-menu dropdown-user animated fadeIn" style="width:200px;">
 								<div class="dropdown-user-scroll scrollbar-outer">
-									<li>
+									<!--<li>
 										<div class="user-box">
 											<div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>Hizrian</h4>
 											</div>
 										</div>
-									</li>
+									</li>-->
 									<li>
+                                        <a class="dropdown-item" href="MyProfile.php">My Profile</a>
+										<a class="dropdown-item" href="ChangePassword.php">Change Password</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">My Profile</a>
-										<a class="dropdown-item" href="#">My Balance</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Account Setting</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Logout</a>
+										<a class="dropdown-item" href="index.php?action=logout">Logout</a>
 									</li>
 								</div>
 							</ul>
@@ -96,19 +103,29 @@ border-bottom: 1px solid #ebecec !important;
 						<li class="nav-item">
                             <a data-toggle="collapse" href="#Booking">
                                 <i class="fas fa-layer-group"></i>
-                                <p>Booking</p>
+                                <p>Orders</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="Booking">
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="NewBookingForm.php">                                     
-                                            <span class="sub-item">New Booking</span>
+                                            <span class="sub-item">New Order</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="ViewBooking.php">
-                                            <span class="sub-item">View Booking</span>
+                                        <a href="ViewOrders.php">
+                                            <span class="sub-item">Recent Orders</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="ViewOrders.php?filter=Invoiced">
+                                            <span class="sub-item">Invoiced Orders</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="ViewOrders.php?filter=nonInvoiced">
+                                            <span class="sub-item">Non-Invoiced Orders</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -124,7 +141,16 @@ border-bottom: 1px solid #ebecec !important;
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="ViewInvoices.php">
-                                            <span class="sub-item">View Invoices</span>
+                                            <span class="sub-item">Recent Invoices</span>
+                                        </a>
+                                    </li> 
+                                    <li>
+                                        <a href="ViewInvoices.php?filter=Paid">
+                                            <span class="sub-item">Paid Invoices</span>
+                                        </a>
+                                    </li> <li>
+                                        <a href="ViewInvoices.php?filter=Unpaid">
+                                            <span class="sub-item">Unpaid Invoices</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -140,33 +166,18 @@ border-bottom: 1px solid #ebecec !important;
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="ViewReceipts.php">
-                                            <span class="sub-item">View Receipts</span>
+                                            <span class="sub-item">New Receipt</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="ViewReceipts.php">
+                                            <span class="sub-item">Manage Receipts</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a data-toggle="collapse" href="#Customer">
-                                <i class="fas fa-layer-group"></i>
-                                <p>Customer</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="Customer">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a href="CreateCustomer.php">
-                                            <span class="sub-item">Create Customer</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="ManageCustomer.php">
-                                            <span class="sub-item">Manage Customer</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                         
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#Accounts">
                                 <i class="fas fa-layer-group"></i>
@@ -183,27 +194,6 @@ border-bottom: 1px solid #ebecec !important;
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
-							<a data-toggle="collapse" href="#Profile">
-								<i class="fas fa-layer-group"></i>
-								<p>Profile</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="Profile">
-								<ul class="nav nav-collapse">
-									<li>
-                                        <a href="MyProfile.php">
-                                            <span class="sub-item">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="ChangePassword.php">
-                                            <span class="sub-item">Change Password</span>
-                                        </a>
-                                    </li>
-								</ul>
-							</div>
-						</li>
 					</ul>
 				</div>
 			</div>

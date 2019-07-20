@@ -1,6 +1,5 @@
-  <?php  include_once("header.php");?>
-        <?php
-   $Branch = $mysql->select("select * from _tbl_branches where BranchID='".$_SESSION['User']['BranchID']."'");
+<?php include_once("header.php");
+    $Branch = $mysql->select("select * from _tbl_branches where BranchCode='".$_GET['BranchCode']."'");
 ?>
     <div class="main-panel">
         <div class="content">
@@ -9,7 +8,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">My Profile</div>
+                                <div class="card-title">View Branch</div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -51,7 +50,7 @@
                                             <div class="form-group form-inline">
                                                 <div class="col-sm-2">Email Address</div>
                                                 <div class="col-sm-4"><?php echo $Branch[0]['EmailID'];?></div>
-                                            </div>                                                                                
+                                            </div>
                                             <div class="form-group form-inline">
                                             <div class="col-sm-2">Mobile Number</div>
                                                 <div class="col-sm-2"><?php echo $Branch[0]['MobileNumber'];?></div>
@@ -72,7 +71,7 @@
                                                 <div class="col-sm-4"><span class="<?php echo ($Branch[0]['IsActive']==1) ? 'Activedot' : 'Deactivedot';?>"></span>&nbsp;&nbsp;<?php if($Branch[0]['IsActive']==0){ echo "Deactive";} else { echo "Active"; }?></div>
                                             </div>
                                             <div class="card-action" style="Text-align:right">
-                                    <!--<a href="ManageBranch" class="btn btn-danger">Cancel</a>      -->
+                                    <a href="ManageBranch" class="btn btn-danger">Cancel</a>
                                         </div>
                                     </div>
                                 </div>
@@ -84,4 +83,4 @@
                 </div>
             </div>
 
-<?php  include_once("footer.php");?>
+<?php include_once("footer.php");?>
