@@ -69,13 +69,11 @@
                                     Invoice Already Generated. 
                                 <?php
                                 }
-                                
                                     } else {
                                                  ?>
                                                     Access Denied. Please Contact Administrator.
                                                  <?php
                                              }
-                                              
                                              }
                                            ?>
                                         

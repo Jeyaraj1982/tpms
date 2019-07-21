@@ -154,7 +154,22 @@ date_default_timezone_set("Asia/Kolkata");
             $Rows   = $mysql->select("select count(*) as rCount from `_tbl_invoices`");
             return SeqMaster::GenerateCode($prefix,$length,$Rows[0]['rCount']+1);
         }
+        
+        function GetNextReceiptNumber() {
+            global $mysql;
+            $prefix = "RPT";
+            $length = 4;
+            $Rows   = $mysql->select("select count(*) as rCount from `_tbl_receipts`");
+            return SeqMaster::GenerateCode($prefix,$length,$Rows[0]['rCount']+1);
+        }
 }
-
+        class Application {
+            function GetBranchBalance($BranchID) {
+               global $mysql;
+               $data  = $mysql->select("select (sum(PaidToAdmin)-sum(ReceviedAmount))  as rTotal from `_tbl_branches_accounts` where BranchID='".$BranchID."'");   
+               return isset($data[0]['rTotal']) ? $data[0]['rTotal'] : 0;
+            }
+        }
+        $applicaiton = new Application();
 $mysql   = new MySql("localhost","nahami_user","nahami_user","nahami_tpms");
 ?>

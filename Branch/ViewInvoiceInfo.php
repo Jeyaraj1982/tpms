@@ -22,6 +22,12 @@
                                 if ($InvoiceInfo[0]['BalanceAmount']==0) {
                                     echo "Paid";
                                 } else {
+                                    ?>
+                                    <a href="PayInvoice.php?Invoice=<?php echo $_GET['Invoice'];?>" class="btn btn-primary btn-round ml-auto">
+                                        Pay Now
+                                    </a><br>
+                                    
+                                    <?php
                                     echo "Unpaid Amount : Rs. ".number_format($InvoiceInfo[0]['BalanceAmount'],2);
                                 }
                             ?>

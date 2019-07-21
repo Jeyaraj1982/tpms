@@ -4,8 +4,8 @@
     
     function addProductToCart() {
         global $mysql;
-        $Products = $mysql->select("select * from _tbl_products");
-        $suppliers = $mysql->select("select * from _tbl_suppliers");
+        $Products = $mysql->select("select * from `_tbl_products` where `IsActive`='1'");
+        $suppliers = $mysql->select("select * from `_tbl_suppliers`  where `IsActive`='1'");
         $formid = rand(9000,9999);
         ?>
         <div class="modal-header no-bd">

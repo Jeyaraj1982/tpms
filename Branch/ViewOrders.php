@@ -20,11 +20,9 @@
                             <tr>
                                 <th>Order No</th>
                                 <th>Date</th>
-                                <th>Ordered </th>
                                 <th>Customer Name</th>
-                                <th>Order Value</th>
-                                
-                                <th style="width: 10%">Action</th>
+                                <th style="text-align:center">Order Value</th>
+                                <th style="width: 10%;text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,7 +39,6 @@
                             <tr>
                                 <td><?php echo $Order['OrderNumber'];?></td>
                                 <td><?php echo putDateTime($Order['OrderDate']);?></td>    
-                                <td><?php echo $Order['BranchName'];?></td>                                                                      
                                 <td><?php echo $Order['CustomerName'];?></td>                                                          
                                 <td style="text-align:right"><?php echo number_format($Order['OrderValue'],2);?></td>
                                 <td style="Text-align:center;"><?php echo ($Order['InvoiceID']== 0)? " <a href='javascript:void(0)' onclick=\"GenerateInvoice('".$Order['OrderNumber']."')\" style='cursor:pointer;color:blue'>Generate Invoice </a>" : 

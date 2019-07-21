@@ -46,8 +46,12 @@ if (isset($_SESSION['User']) && $_SESSION['User']['BranchID']>0) {
 if (isset($_POST['btnLogin'])) {
     $d=$mysql->select("select * from `_tbl_branches` where `IsActive`='1' and `UserName`='".$_POST['UserName']."' and `UserPassword`='".$_POST['Password']."'");
     if (sizeof($d)>0) {
+        if ($d[0]['IsActive']==1) {
           $_SESSION['User']=$d[0];
           echo "<script>location.href='dashboard.php';</script>";
+        } else {
+            $error = "Couldn't login. Account has suspended.";
+        }
     } else {
         $error = "invalid username or password";
     }

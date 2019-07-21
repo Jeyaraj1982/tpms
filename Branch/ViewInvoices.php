@@ -16,12 +16,11 @@
                             <tr>
                                 <th>Invoice No</th>
                                 <th>Date</th>
-                                <th>Invoiced </th>
                                 <th>Customer Name</th>
-                                <th>Invoice Value</th>
-                                <th>Paid</th>
-                                <th>Balance</th>
-                                <th style="width: 10%">Action</th>
+                                <th style="text-align:center">Invoice Value</th>
+                                <th style="text-align:center">Paid</th>
+                                <th style="text-align:center">Balance</th>
+                                <th style="width: 10%;text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,23 +37,30 @@
                             <tr>
                                 <td><?php echo $invoice['InvoiceNumber'];?></td>
                                 <td><?php echo putDateTime($invoice['InvoiceDate']);?></td>    
-                                <td><?php echo $invoice['BranchName'];?></td>                                                                      
                                 <td><?php echo $invoice['CustomerName'];?></td>
                                 <td style="text-align:right"><?php echo number_format($invoice['InvoiceValue'],2);?></td>
                                 <td style="Text-align:right;"><?php echo number_format($invoice['PaidAmount'],2);?></td>   
                                 <td style="Text-align:right;"><?php echo number_format($invoice['BalanceAmount'],2);?></td>   
-                                <td><div class="form-button-action">
-                                    <a href="ViewInvoiceInfo.php?Invoice=<?php echo $invoice["InvoiceNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 0px;" >
+                                <td style="text-align:right">
+                                    <div class="form-button-action">
+                                        <?php if ($invoice['BalanceAmount']>0) { ?>
+                                        <a href="PayInvoice.php?Invoice=<?php echo $invoice['InvoiceNumber'];?>" class="btn btn-primary btn-round ml-auto" style="padding:2px 10px">
+                                        Pay Now
+                                        </a>
+                                        <?php } ?>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a href="ViewInvoiceInfo.php?Invoice=<?php echo $invoice["InvoiceNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
                                         <i class="fa fa-list-alt"></i>
-                                    </a>
-                                    </div></td>
-                                    </tr>
-                                <?php }?>
-                                <?php if (sizeof($Invoices)==0) {?>
-                                    <tr>
-                                        <td colspan="8" style="text-align:center">No records found</td>
-                                    </tr>
-                                <?php } ?>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php }?>
+                            <?php if (sizeof($Invoices)==0) {?>
+                            <tr>
+                                <td colspan="8" style="text-align:center">No records found</td>
+                            </tr>
+                            <?php } ?>
                                 </tbody>
                             </table>
                         </div>

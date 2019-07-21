@@ -166,11 +166,6 @@ border-bottom: 1px solid #ebecec !important;
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="ViewReceipts.php">
-                                            <span class="sub-item">New Receipt</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="ViewReceipts.php">
                                             <span class="sub-item">Manage Receipts</span>
                                         </a>
                                     </li>
@@ -187,8 +182,8 @@ border-bottom: 1px solid #ebecec !important;
                             <div class="collapse" id="Accounts">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="CustomerWiseAccount.php">
-                                            <span class="sub-item">Customer Wise Account</span>
+                                        <a href="MyTransactions.php">
+                                            <span class="sub-item">My Transactions</span>
                                         </a>
                                     </li>
                                 </ul>
