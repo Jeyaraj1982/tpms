@@ -207,7 +207,7 @@ border-bottom: 1px solid #ebecec !important;
                             <div class="collapse" id="Receipts">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="Receipts.php">
+                                        <a href="ViewReceipts.php">
                                             <span class="sub-item">Manage Receipts</span>
                                         </a>
                                     </li>
