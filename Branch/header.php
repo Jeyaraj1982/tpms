@@ -186,6 +186,11 @@ border-bottom: 1px solid #ebecec !important;
                                             <span class="sub-item">My Transactions</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="CustomerWiseOutStanding.php">
+                                            <span class="sub-item">Customer Wise OutStanding</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

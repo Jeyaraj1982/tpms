@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex align-items-center">
-                    <h4 class="card-title">Branch Wise Outstanding</h4>
+                    <h4 class="card-title">Customer Wise Outstanding</h4>
                 </div>
             </div>
             <div class="card-body">
@@ -14,39 +14,36 @@
                     <table id="add-row" class="display table table-striped table-hover" >
                         <thead>
                             <tr>
-                                <th>Branch Code</th>
-                                <th>Branch Name</th>
-                                <th style="text-align:right">Outstanding Amount</th>
+                                <th>Customer Code</th>
+                                <th>Customer Name</th>
+                                <th style="text-align:right">Invoice Amount</th>
+                                <th style="text-align:right">Paid Amount</th>
+                                <th style="text-align:right">Balance Amount</th>
                                 <th style="width: 10%;text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $Branches = $mysql->select("SELECT BranchCode,BranchName, (SUM(PaidToAdmin)-SUM(ReceviedAmount)) AS amt FROM _tbl_branches_accounts GROUP BY BranchID "); ?>
-                        <?php foreach($Branches as $Branch) { ?>
+                        <?php $Customers = $mysql->select("SELECT *   FROM _tbl_customers where CreatedByID ='".$_SESSION['User']['BranchID']."' Order BY CustomerID "); ?>
+                        <?php foreach($Customers as $Customer) { 
+                            $invoice =  $mysql->select("select  sum(InvoiceValue) as InvoiceAmt,  sum(PaidAmount) as PAmount, (sum(InvoiceValue)-sum(PaidAmount)) as BalanceAmt from _tbl_invoices where  CustomerID='".$Customer['CustomerID']."' "); 
+                            
+                            ?>
                             <tr>
-                                <td><?php echo $Branch['BranchCode'];?></td>
-                                <td><?php echo $Branch['BranchName'];?></td>
-                                <td style="text-align:right"><?php echo number_format($Branch['amt'],2);?></td>
+                                <td><?php echo $Customer['CustomerCode'];?></td>
+                                <td><?php echo $Customer['CustomerName'];?></td>
+                                <td style="text-align:right"><?php echo number_format($invoice[0]['InvoiceAmt'],2);?></td>
+                                <td style="text-align:right"><?php echo number_format($invoice[0]['PAmount'],2);?></td>
+                                <td style="text-align:right"><?php echo number_format($invoice[0]['BalanceAmt'],2);?></td>
                                 <td style="text-align:right">
                                     <div class="form-button-action">
-                                        <?php if ($Branch['amt']<0) { ?>
-                                        <a href="Payment.php?Branch=<?php echo $Branch['BranchCode'];?>" class="btn btn-primary btn-round ml-auto" style="padding:2px 10px">
-                                        Pay Amount
-                                        </a>
-                                        <?php } else { ?>
-                                        <a href="Payment.php?Branch=<?php echo $Branch['BranchCode'];?>" class="btn btn-primary btn-round ml-auto" style="padding:2px 10px">
-                                        Refill
-                                        </a>
-                                        <?php } ?>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <a href="BranchWiseOutStandingInfo.php?Branch=<?php echo $Branch["BranchCode"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                        <a href="ViewCustomerTransactions.php?Customer=<?php echo $Customer["CustomerCode"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
                                         <i class="fa fa-list-alt"></i>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
                             <?php }?>
-                            <?php if (sizeof($Branches)==0) {?>
+                            <?php if (sizeof($Customers)==0) {?>
                             <tr>
                                 <td colspan="8" style="text-align:center">No records found</td>
                             </tr>

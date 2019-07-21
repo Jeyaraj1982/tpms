@@ -66,7 +66,7 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Recent Transactions</div>
+										<div class="card-title">Transactions</div>
 										<div class="card-tools">
 											
 										</div>
@@ -75,7 +75,49 @@
 								</div>
 								<div class="card-body">
 									<div class="chart-container" style="min-height: 375px">
-										<p align="center">No records found</p>
+										<!-- <p align="center">No records found</p>-->
+                                        <?php
+                                             $cusinvoice =  $mysql->select("select  sum(InvoiceValue) as InvoiceAmt,  sum(PaidAmount) as PAmount, (sum(InvoiceValue)-sum(PaidAmount)) as BalanceAmt from _tbl_invoices ");
+                                             
+                                        ?>
+                                         <?php $BrancheOutstanding = $mysql->select("SELECT  SUM(PaidToAdmin) AS pamt, SUM(ReceviedAmount)as ramt, (SUM(PaidToAdmin)-SUM(ReceviedAmount)) AS amt FROM _tbl_branches_accounts "); ?>
+                       
+                                        <table>
+                                            <tr>
+                                                <td><b>Overall Invoice wise</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Invoice Amount</td>
+                                                <td style="text-align:right;padding-left:100px;"><?php echo number_format($cusinvoice[0]['InvoiceAmt'],2);?></td>
+                                            </tr>
+                                              <tr>
+                                                <td>Receipt Amount</td>
+                                                <td style="text-align:right"><?php echo number_format($cusinvoice[0]['PAmount'],2);?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Payable Amount</td>
+                                                <td style="text-align:right"><?php echo number_format($cusinvoice[0]['BalanceAmt'],2);?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><br><Br><br></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Overall Branch wise</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Collected</td>
+                                                <td style="text-align:right"><?php echo number_format($BrancheOutstanding[0]['ramt'],2);?></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>Total Paid To Admin</td>
+                                                <td style="text-align:right"><?php echo number_format($BrancheOutstanding[0]['pamt'],2);?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Balance Paid To Admin</td>
+                                                <td style="text-align:right"><?php echo number_format($BrancheOutstanding[0]['amt'],2);?></td>
+                                            </tr>
+                                        </table>
 									</div>
 									<div id="myChartLegend"></div>
 								</div>
