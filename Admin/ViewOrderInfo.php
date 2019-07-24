@@ -29,6 +29,9 @@
                                         echo 'Not Invoiced';
                                     }
                                 ?>
+                                &nbsp;<a target="_blank" href="download.php?Order=<?php echo $OrderInfo[0]["OrderNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                        <i class="fas fa-download"></i>
+                                        </a>
                             </div>
                                 <div style="border:1px solid #e5e5e5;margin:10px;padding:20px;">
                                 <table style="width:100%;">

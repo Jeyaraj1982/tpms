@@ -7,6 +7,19 @@ include_once("../lib/mpdf/mpdf.php");
 $mpdf->WriteHTML($html);
 $mpdf->Output();
        }
+       
+        if (isset($_GET['Order']))  {
+             $html  = OrderDownload($_GET['Order']);
+$mpdf->WriteHTML($html);
+$mpdf->Output();
+       }
+       
+         if (isset($_GET['Receipt']))  {
+             $html  = ReceiptDownload($_GET['Receipt']);
+$mpdf->WriteHTML($html);
+$mpdf->Output();
+       }
+   
    
  
 //call watermark content aand image

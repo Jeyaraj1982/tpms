@@ -61,7 +61,7 @@ border-bottom: 1px solid #ebecec !important;
             <div class="logo-header" data-background-color="blue">
                 
                 <a href="index.php" class="logo">
-                    <!--<img src="../assets/img/logo.svg" alt="navbar brand" class="navbar-brand"> -->
+                    <img src="../assets/images/logo.jpg" alt="navbar brand" style="height:50px;border-radius: 10px;">
                 </a>
               <!--  <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -70,9 +70,9 @@ border-bottom: 1px solid #ebecec !important;
                 </button>
                 <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>-->
                 <div class="nav-toggle">
-                    <!--<button class="btn btn-toggle toggle-sidebar">
+                   <!-- <button class="btn btn-toggle toggle-sidebar">
                         <i class="icon-menu"></i>
-                    </button>-->
+                    </button> -->
                 </div>
             </div>
             <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">            

@@ -8,7 +8,18 @@ $mpdf->WriteHTML($html);
 $mpdf->Output();
        }
    
- 
+        if (isset($_GET['Order']))  {
+             $html  = OrderDownload($_GET['Order'],1);
+$mpdf->WriteHTML($html);
+$mpdf->Output();
+       }
+       
+        if (isset($_GET['Receipt']))  {
+             $html  = ReceiptDownload($_GET['Receipt'],1);
+$mpdf->WriteHTML($html);
+$mpdf->Output();
+       }
+   
 //call watermark content aand image
 //$mpdf->SetWatermarkText('phpflow.COM');
 //$mpdf->showWatermarkText = true;

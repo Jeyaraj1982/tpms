@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set("Asia/Kolkata");
 
-	class MySql {
+    class MySql {
         
         var $link; 
         var $dbName = "";
@@ -195,7 +195,8 @@ $mysql   = new MySql("localhost","nahami_user","nahami_user","nahami_tpms");
                  
         $return = '<div class="table-responsive">
                            
-                                <div style="">
+                               <div style="border:1px solid #e5e5e5;margin:10px;padding:20px;">
+                                '.PDFHeader().'
                                 <table style="width:100%;">
                                 <tr>
                                     <td style="width:50%;vertical-align:top">
@@ -282,4 +283,196 @@ $mysql   = new MySql("localhost","nahami_user","nahami_user","nahami_tpms");
                         </div>';
         return $return;
 }
+
+    function OrderDownload($OrderNumber,$isAdmin=0) {
+        global $mysql;
+        if ($isAdmin==0) {
+        $OrderInfo = $mysql->select("select * from `_tbl_orders` where `CreatedBy`='".$_SESSION['User']['BranchID']."' and `OrderNumber`='".$_GET['Order']."'") ;
+        } else {
+        $OrderInfo = $mysql->select("select * from `_tbl_orders` where `OrderNumber`='".$_GET['Order']."'") ;    
+        }
+       if (sizeof($OrderInfo)==0) {
+        return "Error";
+       } 
+       
+        $OrderItems = $mysql->select("select * from _tbl_orders_items where OrderID='".$OrderInfo[0]['OrderID']."'");
+        $i=1;
+      $return = '  <div class="table-responsive">
+                     
+                                <div style="border:1px solid #e5e5e5;margin:10px;padding:20px;">
+                                
+                                '.PDFHeader().'
+                                <table style="width:100%;">
+                                <tr>
+                                    <td style="width:50%;vertical-align:top">
+                                        <div>
+                                            <b>Order From</b><Br><br>'.
+                                            $OrderInfo[0]['CustomerName'].',<br>'.
+                                            (strlen(trim($OrderInfo[0]['AddressLine1']))>0 ?  $OrderInfo[0]['AddressLine1'].",<br>" : "") . 
+                                            (strlen(trim($OrderInfo[0]['AddressLine2']))>0 ?  $OrderInfo[0]['AddressLine2'].",<br>" : "") . 
+                                            (strlen(trim($OrderInfo[0]['AddressLine3']))>0 ?  $OrderInfo[0]['AddressLine3'].",<br>" : "") . 
+                                            (strlen(trim($OrderInfo[0]['PinCode']))>0 ?  $OrderInfo[0]['PinCode'].",<br>" : "") . 
+                                            ' Mobile: '.$OrderInfo[0]['MobileNumber'].',<br>
+                                             Email: '.$OrderInfo[0]['EmailID'].',<br>
+                                        </div>
+                                    </td>
+                                    <td style="text-align:right;width:50%;vertical-align:top">
+                                        <b>Order Information</b><br><br>
+                                        <b>Order #</b>&nbsp;:&nbsp;'.$OrderInfo[0]['OrderNumber'].'<br>
+                                        <b>Ordered</b>&nbsp;:&nbsp;'.putDateTime($OrderInfo[0]['OrderDate']).'<br><br>
+                                        <b>Branch</b>&nbsp;:&nbsp;'.$OrderInfo[0]['BranchName'].'<br><br>
+                                    </td>
+                                </tr>
+                               </table>
+                               <hr> 
+                               <table id="add-row" style="width:100%" class="display table table-striped table-hover">
+                                    <tr>
+                                        <td>Sl No</td>
+                                        <td>Particulars</td>
+                                        <td style="text-align:center">Qty</td>
+                                        <td style="text-align:center">Price</td>
+                                        <td style="text-align:center">Amount</td>
+                                        <td style="text-align:center">Service Chrg</td>
+                                        <td style="text-align:center">Total</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7">  <hr> </td>
+                                     </tr>
+                                   ';
+                                     
+                                    foreach($OrderItems as $items) {
+                                        $return .= '<tr>
+                                            <td style="text-align:right">'.$i.'.&nbsp;</td>
+                                            <td>'.$items['ProductName'].'<Br>
+                                                <span style="color:#555">'.$items['Remarks'].'</span>
+                                            </td>
+                                            <td style="text-align:right">'.$items['Qty'].'</td>
+                                            <td style="text-align:right">'.number_format($items['Amount'],2).'</td>
+                                            <td style="text-align:right">'.number_format($items['TAmount'],2).'</td>
+                                            <td style="text-align:right">'.number_format($items['ServiceCharge'],2).'</td>
+                                            <td style="text-align:right">'.number_format($items['TsAmount'],2).'</td>
+                                        </tr>';
+                                        $i++; 
+                                        $totalAmt+=$items['TsAmount'];
+                                        } 
+                                   $return .= '
+                                    <tr>
+                                        <td colspan="7">  <hr> </td>
+                                     </tr>
+                                        <tr>
+                                           <td colspan="6" style="text-align:right">Total Amount</td>
+                                           <td style="text-align:right">'.number_format($OrderInfo[0]['OrderValue'],2).'</td>
+                                        </tr>
+                                     <tr>
+                                        <td colspan="7">  <hr> </td>
+                                     </tr>
+                               </table>
+                        
+                              
+                         <p align="right" style="font-size:10px;color:#888">Generated on: '.date("Y-m-d H:i").'</p>
+                                
+                        </div>';
+                        return $return;
+    }
+    
+    function ReceiptDownload($ReceiptNumber,$isAdmin=0) {
+        global $mysql;
+        if ($isAdmin==0) {
+        $ReceiptInfo = $mysql->select("select * from `_tbl_receipts` where `CreatedBy`='".$_SESSION['User']['BranchID']."' and `ReceiptNumber`='".$_GET['Receipt']."'") ;    
+        } else {
+            $ReceiptInfo = $mysql->select("select * from `_tbl_receipts` where   `ReceiptNumber`='".$_GET['Receipt']."'") ;
+        }
+         if (sizeof($ReceiptInfo)==0) {
+             return "Error";
+         }
+        $return = ' 
+                               
+        <div class="table-responsive"> 
+                                <div style="border:1px solid #e5e5e5;margin:10px;padding:20px;">
+                                '.PDFHeader().'
+                                <table style="width:100%;">
+                                <tr>
+                                    <td style="width:50%;vertical-align:top">
+                                        <div>
+                                            <b>Customer Information</b><Br><br>
+                                            '.$ReceiptInfo[0]['CustomerName'].',<br>'.
+                                            (strlen(trim($ReceiptInfo[0]['AddressLine1']))>0 ?  $ReceiptInfo[0]['AddressLine1'].",<br>" : "").
+                                            (strlen(trim($ReceiptInfo[0]['AddressLine2']))>0 ?  $ReceiptInfo[0]['AddressLine2'].",<br>" : ""). 
+                                            (strlen(trim($ReceiptInfo[0]['AddressLine3']))>0 ?  $ReceiptInfo[0]['AddressLine3'].",<br>" : ""). 
+                                            (strlen(trim($ReceiptInfo[0]['Pincode']))>0 ?  $ReceiptInfo[0]['Pincode'].",<br>" : "").' 
+                                            Mobile:'.$ReceiptInfo[0]['MobileNumber'].',<br>
+                                            Email:'.$ReceiptInfo[0]['EmailID'].',<br>
+                                        </div>
+                                    </td>
+                                    <td style="text-align:right;width:50%;vertical-align:top">
+                                        <b>Receipt Information</b><br><br>
+                                        <b>Receipt #</b>&nbsp;:&nbsp;'.$ReceiptInfo[0]['ReceiptNumber'].'<br>
+                                        <b>Date</b>&nbsp;:&nbsp;'.putDateTime($ReceiptInfo[0]['ReceiptDate']).'<br><br>
+                                        <b>Invoice Information</b><br> 
+                                        <b>Invoice #</b>&nbsp;:&nbsp;'.$ReceiptInfo[0]['InvoiceNumber'].'<br><Br>
+                                        <b>Branch</b>&nbsp;:&nbsp;'.$ReceiptInfo[0]['BranchName'].'<br><br>
+                                    </td>
+                                </tr>
+                               </table>
+                               <hr> 
+                               <table style="width:100%" id="add-row" class="display table table-striped table-hover">
+                                  
+                                    <tr>
+                                        <td>Sl No</td>
+                                        <td>Particulars</td>
+                                        <td style="text-align:center">Amount</td>
+                                    </tr>
+                                      <tr>
+                                         <td colspan="3"><hr></td>
+                                    </tr>
+                                   <tr>
+                                    <td>1.</td>
+                                        <td>Part payment Recevied against Invoice Number '.$ReceiptInfo[0]['InvoiceNumber'].'</td>
+                                        <td style="text-align:right">'.number_format($ReceiptInfo[0]['ReceiptAmount'],2).'</td>
+                                   </tr>
+                                     <tr>
+                                         <td colspan="3"><hr></td>
+                                    </tr>
+                                       <tr>
+                                        <td style="text-align:right" colspan="2">Paid Amount</td>
+                                        <td style="text-align:right">'. number_format($ReceiptInfo[0]['ReceiptAmount'],2).'</td>
+                                       </tr>
+                                      <tr>
+                                         <td colspan="3"><hr></td>
+                                    </tr>
+                                   </tbody> 
+                               </table>
+                             <p align="right" style="font-size:10px;color:#888">Generated on: '.date("Y-m-d H:i").'</p>    
+                               </div>
+                             
+                            
+                        
+                        </div>';
+        return $return;
+        
+    }
+    
+    function PDFHeader() {
+        
+        return "<div>
+        <table style='width:100%' cellpadding='0' cellspacing='0' >
+                <tr>
+                    <td style='vertical-align:top;font-size:10px;'>
+                         <p align='right'>No 520/3A, South Bye Pass Road,</p>
+                        <p align='right'>Kurichi Signal Near K A Hotel,</p>
+                        <p align='right'>Melapalayam, Tirunelveli - 627005.</p>
+                        <p align='right'>PH: +91 9626787878,+91 9698989878. </p>
+                    </td>
+                    <td style='width:160px;vertical-align:top;text-align:right !important;'>
+                      <img src='http://nahami.online/demo/tpms/assets/images/logo.jpg' style='height:50px;'>
+                    </td>
+                </tr>    
+                </table>
+                    </div>
+                   <br><br><br>
+        
+        
+        
+        ";
+    }
 ?>

@@ -43,10 +43,12 @@
                                 <td style="text-align:right"><?php echo number_format($Order['OrderValue'],2);?></td>
                                 <td style="Text-align:center;"><?php echo ($Order['InvoiceID']== 0)? " <a href='javascript:void(0)' onclick=\"GenerateInvoice('".$Order['OrderNumber']."')\" style='cursor:pointer;color:blue'>Generate Invoice </a>" : 
                                             "<a href='ViewInvoiceInfo.php?Invoice=".$Order['InvoiceNumber']."'  style='cursor:pointer;color:blue'> Invoiced </a>";?></td>
-                                <td><div class="form-button-action">
+                                <td style="Text-align:right"><div class="form-button-action">
                                     <a href="ViewOrderInfo.php?Order=<?php echo $Order["OrderNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 0px;" >
                                         <i class="fa fa-list-alt"></i>
-                                    </a>
+                                    </a>&nbsp;<a target="_blank" href="download.php?Order=<?php echo $Order["OrderNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                        <i class="fas fa-download"></i>
+                                        </a>
                                     </div></td>
                                     </tr>
                                 <?php }?>

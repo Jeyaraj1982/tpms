@@ -50,6 +50,9 @@ border-bottom: 1px solid #ebecec !important;
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
+              <a href="index.php" class="logo">
+                    <img src="../assets/images/logo.jpg" alt="navbar brand" style="height:50px;border-radius: 10px;">
+                </a>
 				<!--<a href="index.php" class="logo">
 					<img src="../assets/img/logo.svg" alt="navbar brand" class="navbar-brand">
 				</a> -->

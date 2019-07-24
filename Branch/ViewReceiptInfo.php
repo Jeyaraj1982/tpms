@@ -17,7 +17,9 @@
                                     
                             ?>
                             <div style=";margin:10px;padding:20px;padding-top:0px;padding-right:0px;padding-bottom:10px;text-align:right">
-                            
+                                 <a target="_blank" href="download.php?Receipt=<?php echo $ReceiptInfo[0]["ReceiptNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                        <i class="fas fa-download"></i>
+                                        </a>
                             </div>
                                 <div style="border:1px solid #e5e5e5;margin:10px;padding:20px;">
                                 <table style="width:100%;">
