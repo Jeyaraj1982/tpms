@@ -18,7 +18,7 @@
                                                 $InvoiceInfo = $mysql->select("select * from `_tbl_invoices` where `CreatedBy`='".$_SESSION['User']['BranchID']."' and `InvoiceNumber`='".$_GET['Invoice']."'") ;
                                                 $err==0;
                                                 
-                                                if ($InvoiceInfo[0]['BalanceAmount']>0) {
+                                                if ($InvoiceInfo[0]['BalanceAmount']==0) {
                                                      $errorMessage = "Invoice already Paid";
                                                      $err++;
                                                 }

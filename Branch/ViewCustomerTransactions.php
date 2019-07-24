@@ -41,7 +41,6 @@
                                 <th>Txn Date</th>
                                 <th>Invoce Number </th>
                                 <th>Invoice Amount</th>
-                                <th>Recepit Number</th>
                                 <th>Recepit Amount</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
@@ -90,16 +89,15 @@ FROM
                                 <?php echo putDateTime($Receipt['transactionDate']);?></td>    
                                 <td><?php echo $Receipt['InvoiceNumber'];?></td>                                                                      
                                  <td style="text-align:right"><?php echo number_format($Receipt['InvoceAmount'],2);?></td>
-                                <td><?php echo $Receipt['ReceiptNumber'];?></td>
                                 <td style="text-align:right"><?php echo number_format($Receipt['ReceiptAmount'],2);?></td>
                                 <td style="text-align:right"><div class="form-button-action">
                                 <?php if ($Receipt['InvoceAmount']>0) {?>
-                                     <a href="ViewInvoiceInfo.php?Receipt=<?php echo $Receipt["ReceiptNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                     <a href="ViewInvoiceInfo.php?Invoice=<?php echo $Receipt["InvoiceNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
                                         <i class="fa fa-list-alt"></i>&nbsp;&nbsp;View Invoice
                                     </a>
                                 <?php } ?>
                                  <?php if ($Receipt['ReceiptAmount']>0) {?>
-                                     <a href="ViewReceiptInfo.php?Receipt=<?php echo $Receipt["ReceiptNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                     <a href="ViewReceiptsByInvoiceNumber.php?Invoice=<?php echo $Receipt["InvoiceNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
                                         <i class="fa fa-list-alt"></i>&nbsp;&nbsp;View Receipt
                                     </a>
                                 <?php } ?>

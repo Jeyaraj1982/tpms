@@ -24,7 +24,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $Receipts = $mysql->select("select * from _tbl_receipts  where InvoiceNumber='".$_GET['Invoice']."' order by ReceiptID desc"); ?>
+                        <?php $Receipts = $mysql->select("select * from _tbl_receipts  where `CreatedByID`='".$_SESSION['User']['BranchID']."' and InvoiceNumber='".$_GET['Invoice']."' order by ReceiptID desc"); ?>
                         <?php foreach($Receipts as $Receipt) { ?>
                             <tr>
                                 <td><?php echo $Receipt['ReceiptNumber'];?></td>
