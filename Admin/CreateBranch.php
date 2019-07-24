@@ -1,7 +1,8 @@
 <?php include_once("header.php");?>
 <?php
+     print_r($_POST);
     if (isset($_POST['btnCreateBranch'])) {
-        
+            
         $ErrorCount =0;
             
         $duplicate = $mysql->select("select * from  _tbl_branches where BranchCode='".trim($_POST['BranchCode'])."'");
@@ -20,13 +21,13 @@
              $ErrMobileNumber="Mobile Number Already Exists";    
              $ErrorCount++;
         }
-        if(sizeof($_POST['WhatsappNumber']>0)){
+       /* if(sizeof($_POST['WhatsappNumber']>0)){
         $duplicate = $mysql->select("select * from  _tbl_branches where WhatsappNumber='".trim($_POST['WhatsappNumber'])."'");
         if (sizeof($duplicate)>0) {
              $ErrWhatsappNumber="Whatsapp Number Already Exists";    
              $ErrorCount++;
         }
-        }
+        }*/
         $duplicate = $mysql->select("select * from  _tbl_branches where EmailID='".trim($_POST['EmailID'])."'");
         if (sizeof($duplicate)>0) {
              $ErrEmailID="Email ID Already Exists";    
@@ -59,6 +60,7 @@
         }
     
     }
+    echo $errorMessage;
     
     }  
 ?>
@@ -139,11 +141,11 @@
                                     <div class="col-md-12">
                                      <div class="form-group form-inline">
                                                  <div class="col-md-12"  style="text-align:left">
-                                                    <span class="successmessage"><?php echo $successMessage; ?></span>
+                                                    <span class="successmessage"><?php echo $successmessage; ?></span>
                                                     <span class="errormessage"><?php echo $errorMessage; ?></span>
                                                  </div>
                                             </div>
-                                        <form method="post" action="" onsubmit="return submitBranchDetails()">
+                                        <form method="POST" action="" onsubmit="return submitBranchDetails()">
                                             <div class="form-group form-inline">
                                                 <div class="col-sm-2">Branch Code<span id="star">*</span></div>
                                                 <div class="col-sm-4">
@@ -225,7 +227,7 @@
                                                 </div>
                                              </div>   
                                             <div class="card-action" style="text-align:right">
-                                    <button class="btn btn-success" name="btnCreateBranch">Create Branch</button>&nbsp;
+                                    <button type="submit" class="btn btn-success" name="btnCreateBranch">Create Branch</button>&nbsp;
                                     <a href="ManageBranch" class="btn btn-danger">Cancel</a>
                                     </form>
                                         </div>

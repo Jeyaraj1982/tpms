@@ -8,7 +8,7 @@
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Invoice Information</h4>
                         </div>
-                    </div>
+                    </div>  
                     <div class="card-body">
                         <div class="table-responsive">
                             <?php
@@ -18,6 +18,8 @@
                                     $i=1;
                             ?>
                             <div style=";margin:10px;padding:20px;padding-top:0px;padding-right:0px;padding-bottom:10px;text-align:right">
+                            <a target="_blank" href="download.php?Invoice=<?php echo $_GET['Invoice'];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                        <i class="fas fa-download"></i>
                             <?php
                                 if ($InvoiceInfo[0]['BalanceAmount']==0) {
                                     echo "Paid";

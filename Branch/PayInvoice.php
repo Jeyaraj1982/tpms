@@ -14,8 +14,26 @@
                                         <div class="col-md-12">
                                         <?php
                                             if (isset($_POST['PaynowBtn'])) {
+                                                
                                                 $InvoiceInfo = $mysql->select("select * from `_tbl_invoices` where `CreatedBy`='".$_SESSION['User']['BranchID']."' and `InvoiceNumber`='".$_GET['Invoice']."'") ;
-                                                if ($InvoiceInfo[0]['BalanceAmount']>0) {   
+                                                $err==0;
+                                                
+                                                if ($InvoiceInfo[0]['BalanceAmount']>0) {
+                                                     $errorMessage = "Invoice already Paid";
+                                                     $err++;
+                                                }
+                                                    
+                                                if ($_POST['Amount']==0 || $_POST['Amount']<0) {
+                                                    $errorMessage = "Invalid Amount";  
+                                                    $err++;
+                                                } 
+                                                
+                                                if ($_POST['Amount']>$InvoiceInfo[0]['BalanceAmount'])  {
+                                                    $errorMessage = "Your maximum amount must have Rs. ".number_format($InvoiceInfo[0]['BalanceAmount'],2);
+                                                    $err++;
+                                                }
+
+                                                if ($err==0) {
                                                     $receiptNumber =SeqMaster::GetNextReceiptNumber();                          
                                                     $receiptID  = $mysql->insert("_tbl_receipts",array("InvoiceID"     => $InvoiceInfo[0]['InvoiceID'],
                                                                                                        "InvoiceNumber" => $InvoiceInfo[0]['InvoiceNumber'],
@@ -36,9 +54,9 @@
                                                                                                        "Remarks"       => $_POST['Remarks'])); 
                                                     $paidAmount = $InvoiceInfo[0]['PaidAmount'] + $_POST['Amount'];
                                                     $balanceAmount = $InvoiceInfo[0]['InvoiceValue'] - $paidAmount;
-                                                    
+                                                
                                                     $mysql->execute("update _tbl_invoices set PaidAmount='".$paidAmount."', BalanceAmount='".$balanceAmount."' where InvoiceID='".$InvoiceInfo[0]['InvoiceID']."'");
-                                                    
+                                                
                                                     $mysql->insert("_tbl_branches_accounts",array("BranchID"        => $InvoiceInfo[0]['CreatedBy'], 
                                                                                                   "BranchName"      => $_SESSION['User']['BranchName'],
                                                                                                   "BranchCode"      => $_SESSION['User']['BranchCode'],
@@ -55,20 +73,15 @@
                                                                                                   "BalanceAmount"   => $applicaiton->GetBranchBalance($_SESSION['User']['BranchID'])-$_POST['Amount'],
                                                                                                   "ModeOfTxn"       => ""));
                                                     ?>
-                                                       <style>
-                                                       #paymentdiv {display:none}
-                                                       </style>
-                                                       <div class="form-group form-inline">
-                                                 <div class="col-md-12"  style="text-align:left">
-                                                    <span class="successmessage">Payment Process completed.</span><br>
-                                                    Receipt Number: <?php echo $receiptNumber;?>
-                                                    
-                                                 </div>
-                                            </div>
-                                                    <?php
-                                                } else {
-                                                    $errorMessage = "Invoice already Paid";
-                                                }
+                                                   <style>#paymentdiv {display:none}</style>
+                                                   <div class="form-group form-inline">
+                                                    <div class="col-md-12"  style="text-align:left">
+                                                        <span class="successmessage">Payment Process completed.</span><br>
+                                                        Receipt Number: <?php echo $receiptNumber;?>
+                                                    </div>
+                                                   </div>
+                                                <?php
+                                                }  
                                             }  
                                         ?>
                                             <div class="form-group form-inline">

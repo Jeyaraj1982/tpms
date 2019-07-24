@@ -165,18 +165,18 @@
                                             </div>
                                             <div class="form-group form-inline">
                                                 <div class="col-sm-2">Address Line 1<span id="star">*</span></div>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-4">
                                                     <input type="text" class="form-control" id="AddressLine1" name="AddressLine1" value="<?php echo (isset($_POST['AddressLine1']) ? $_POST['AddressLine1'] : "");?>" placeholder="Enter Address Line 1" style="width:100%">
                                                     <span class="errorstring" id="ErrAddressLine1"><?php echo isset($ErrAddressLine1)? $ErrAddressLine1 : "";?> </span>
                                                  </div>
                                             </div>
                                             <div class="form-group form-inline">
                                                 <div class="col-sm-2">Address Line 2</div>
-                                                <div class="col-sm-10"><input type="text" class="form-control" id="AddressLine2" name="AddressLine2" value="<?php echo (isset($_POST['AddressLine2']) ? $_POST['AddressLine2'] : "");?>" placeholder="Enter Address Line 2" style="width:100%"></div>
+                                                <div class="col-sm-4"><input type="text" class="form-control" id="AddressLine2" name="AddressLine2" value="<?php echo (isset($_POST['AddressLine2']) ? $_POST['AddressLine2'] : "");?>" placeholder="Enter Address Line 2" style="width:100%"></div>
                                             </div>
                                             <div class="form-group form-inline">
                                                 <div class="col-sm-2">Address Line 3</div>
-                                                <div class="col-sm-10"><input type="text" class="form-control" id="AddressLine3" name="AddressLine3" value="<?php echo (isset($_POST['AddressLine3']) ? $_POST['AddressLine3'] : "");?>" placeholder="Enter Address Line 3" style="width:100%"></div>
+                                                <div class="col-sm-4"><input type="text" class="form-control" id="AddressLine3" name="AddressLine3" value="<?php echo (isset($_POST['AddressLine3']) ? $_POST['AddressLine3'] : "");?>" placeholder="Enter Address Line 3" style="width:100%"></div>
                                             </div>
                                             <div class="form-group form-inline">
                                                  <div class="col-sm-2">Pincode<span id="star">*</span></div>
@@ -206,9 +206,9 @@
                                                      <span class="errorstring" id="ErrMobileNumber"><?php echo isset($ErrMobileNumber)? $ErrMobileNumber : "";?></span>
                                                 </div>
                                             </div><div class="form-group form-inline">
-                                            <div class="col-sm-2">Landline Number<span id="star">*</span></div>
+                                            <div class="col-sm-2">Landline Number</div>
                                                 <div class="col-sm-4">
-                                                    <input type="text" maxlength="10" class="form-control" id="LandlineNumber"  name="LandlineNumber" value="<?php echo (isset($_POST['LandlineNumber']) ? $_POST['LandlineNumber'] : "");?>" placeholder="Enter Landline Number" style="width:100%">
+                                                    <input type="text" class="form-control" id="LandlineNumber"  name="LandlineNumber" value="<?php echo (isset($_POST['LandlineNumber']) ? $_POST['LandlineNumber'] : "");?>" placeholder="Enter Landline Number" style="width:100%">
                                                      <span class="errorstring" id="ErrLandlineNumber"><?php echo isset($ErrLandlineNumber)? $ErrLandlineNumber : "";?></span>
                                                 </div>
                                             </div>

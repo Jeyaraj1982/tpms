@@ -15,13 +15,6 @@
              $ErrMobileNumber="Mobile Number Already Exists";    
              $ErrorCount++;
         }
-        if(sizeof($_POST['WhatsappNumber']>0)){
-        $duplicate = $mysql->select("select * from  _tbl_branches where WhatsappNumber='".trim($_POST['WhatsappNumber'])."' and BranchCode<>'".$_GET['BranchCode']."'");;
-        if (sizeof($duplicate)>0) {
-             $ErrWhatsappNumber="Whatsapp Number Already Exists";    
-             $ErrorCount++;
-        }
-        }
         $duplicate = $mysql->select("select * from  _tbl_branches where EmailID='".trim($_POST['EmailID'])."' and BranchCode<>'".$_GET['BranchCode']."'");
         if (sizeof($duplicate)>0) {
              $ErrEmailID="Email ID Already Exists";    

@@ -53,7 +53,7 @@
                                                                              "Qty"           => $items['Qty'],
                                                                              "Amount"        => $items['Amount'],
                                                                              "TAmount"       => $items['TAmount'],
-                                                                             "ServiceCharge" => $items['ServiceCharge'],
+                                                                             "ServiceCharge" => $items['ServiceCharge']>0 ? $items['ServiceCharge'] : "0",
                                                                              "TsAmount"      => $items['TSAmount'],
                                                                              "Remarks"       => $items['Remarks'],
                                                                              "TimeOfJourney" => $items['TimeOfJourney'],
@@ -79,7 +79,7 @@
                                 <div class="form-group form-inline">
                                     <div class="col-sm-2" style="width:auto;padding-left:0px !important;flex: 0 0 0%;">Customer</div>
                                     <div class="col-sm-1"><a data-toggle="modal" data-target="#SearchCustomer" style="color:white" class="btn btn-primary btn-round ml-auto"><i class="fa fa-search search-icon"></i></a></div>
-                                    <div class="col-sm-1"><a data-toggle="modal" data-target="#addCusomer" style="color:white" class="btn btn-primary btn-round ml-auto"><i class="fa fa-plus"></i></a></div>
+                                    <div class="col-sm-1"><a data-toggle="modal" onclick="addCusomer_show();" style="color:white" class="btn btn-primary btn-round ml-auto"><i class="fa fa-plus"></i></a></div>
                                 </div>
                                 <div class="form-group form-inline">
                                     <div class="col-sm-8" id="CustomerInformation" style="width:100%;padding-left:0px !important;"></div>
@@ -149,56 +149,59 @@
                         <div id="msgDiv"></div>
                             <form method="post" id="addCustomerFrom" name="addCustomerFrom" action="NewBookingForm.php" >
                                 <div class="form-group form-inline">
-                                    <div class="col-sm-5">Customer Name</div>
+                                    <div class="col-sm-5">Customer Name<span id="star">*</span></div>
                                     <div class="col-sm-7">
                                         <input type="text" class="form-control" id="CustomerName" name="CustomerName" placeholder="Customer Name" style="width:100%">
                                         <span class="errorstring" id="ErrCustomerName"><?php echo isset($ErrCustomerName)? $ErrCustomerName : "";?></span>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
-                                    <div class="col-sm-5">Mobile Number</div>
+                                    <div class="col-sm-5">Mobile Number<span id="star">*</span></div>
                                     <div class="col-sm-7">
                                         <input type="text" maxlength="10" class="form-control" id="MobileNumber" name="MobileNumber" placeholder="Mobile Number" style="width:100%">
-                                        <span class="errorstring" id="ErrMobileNumber"><?php echo isset($ErrMobileNumber)? $ErrMobileNumber : "";?></span>
+                                        <span class="errorstring" id="ErrMobileNumbera"><?php echo isset($ErrMobileNumbera)? $ErrMobileNumbera : "";?></span>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
-                                    <div class="col-sm-5">Email Address</div>
+                                    <div class="col-sm-5">Email Address<span id="star">*</span></div>
                                     <div class="col-sm-7">
                                         <input type="text" class="form-control" id="EmaiIID" name="EmaiIID" placeholder="Email Address" style="width:100%">
                                         <span class="errorstring" id="ErrEmaiIID"><?php echo isset($ErrEmaiIID)? $ErrEmaiIID : "";?></span>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
-                                    <div class="col-sm-5">Address Line 1</div>
+                                    <div class="col-sm-5">Address Line 1<span id="star">*</span></div>
                                     <div class="col-sm-7">
                                         <input type="text" class="form-control" id="AddressLine1" name="AddressLine1" placeholder="Address Line 1" style="width:100%">
                                         <span class="errorstring" id="ErrAddress"><?php echo isset($ErrAddress)? $ErrAddress : "";?></span>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
-                                    <div class="col-sm-5">Address Line 2</div>
+                                    <div class="col-sm-5">Address Line 2<span id="star">*</span></div>
                                     <div class="col-sm-7">
                                         <input type="text" class="form-control" id="AddressLine2" name="AddressLine2" placeholder="Address Line 2" style="width:100%">
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
-                                    <div class="col-sm-5">Address Line 3</div>
+                                    <div class="col-sm-5">Address Line 3<span id="star">*</span></div>
                                     <div class="col-sm-7">
                                         <input type="text" class="form-control" id="AddressLine3" name="AddressLine3" placeholder="Address Line 3" style="width:100%">
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
-                                    <div class="col-sm-5">Pincode</div>
+                                    <div class="col-sm-5">Pincode<span id="star">*</span></div>
                                     <div class="col-sm-7">
                                         <input type="text" class="form-control" maxlength="6" id="Pincode" name="Pincode" placeholder="Pincode" style="width:100%">
                                         <span class="errorstring" id="ErrPincode"><?php echo isset($ErrPincode)? $ErrPincode : "";?></span>
                                     </div>
                                 </div>
                                 <br>
+                                <div class="card-action" id="api_error">
+                                     
+                                </div>
                                 <div class="card-action">
                                     <a class="btn btn-success" onclick="submitCustomerDetails()" name="CreateCustomer" style="color:white">Create</a>
-                                    <a href="" class="btn btn-danger" style="color: white;">Cancel</a>
+                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
                             </form>
                         </div>
@@ -237,10 +240,18 @@
                
                
                 function addToCart(formID) {
+                    $('#product_body_error').html("");
                    $('#Product').modal('show'); 
                    var param = $( "#"+formID).serialize();
-                   $.post("webservice.php?action=addToCart",param,function(result2) {$('#product_body').html(result2);getCartItems();
+                   $.post("webservice.php?action=addToCart",param,function(result2) {
+                       if (result2=="success") {
+                       $('#product_body').html(result2);
+                   
+                   getCartItems();
                     $('#Product').modal("hide");
+                       } else {
+                           $('#product_body_error').html(result2);
+                       }
                    });
                 }
                 setTimeout("getCartItems()",1000); 
@@ -267,7 +278,7 @@
                 }
                 
                 function submitOrder() {
-                    
+                  $('#api_error').html("");    
                     if ($('#customercode').val().length>0) {
                         
                         if (parseInt($('#PayableAmount').val())>0) {
@@ -285,9 +296,9 @@
                 }
             
                                 function submitCustomerDetails() {
-
+                                    $('#api_error').html(""); 
                                     $('#ErrCustomerName').html("");
-                                    $('#ErrMobileNumber').html("");
+                                    $('#ErrMobileNumbera').html("");
                                     $('#ErrEmaiIID').html("");
                                     $('#ErrAddressLine1').html("");
                                     $('#ErrPincode').html("");
@@ -296,8 +307,8 @@
 
                                     IsNonEmpty("CustomerName", "ErrCustomerName", "Please Enter Valid Customer Name");
 
-                                      if(IsNonEmpty("MobileNumber","ErrMobileNumber","Please Enter MobileNumber")) {
-                                     IsMobileNumber("MobileNumber","ErrMobileNumber","Please Enter Valid MobileNumber");
+                                    if(IsNonEmpty("MobileNumber","ErrMobileNumbera","Please Enter MobileNumber")) {
+                                     IsMobileNumber("MobileNumber","ErrMobileNumbera","Please Enter Valid MobileNumber");
                                      }
 
                                     if (IsNonEmpty("EmaiIID", "ErrEmaiIID", "Please Enter Contact Email Address")) {
@@ -309,11 +320,38 @@
 
                                     if (ErrorCount == 0) {
                                                 var param = $( "#addCustomerFrom").serialize();
-        $.post("webservice.php?action=addCustomer",param,function(result2) {$('#cus_searchresult').html(result2);});
+        $.post("webservice.php?action=addCustomer",param,function(result2) {
+                   if (parseInt(result2)>0) {
+                      $('#cus_searchresult').html(result2); 
+                   } else {
+                        $('#api_error').html(result2); 
+                   }
+            
+        
+        });
           
                                     } else {
                                         return false;
-                                    }
+                                    }                           
+                                }
+                                function addCusomer_show() {
+                                    $('#addCusomer').modal("show");
+                                    
+                                    $('#ErrCustomerName').html("");
+                                    $('#ErrMobileNumbera').html("");
+                                    $('#ErrEmaiIID').html("");
+                                    $('#ErrAddressLine1').html("");
+                                    $('#ErrAddress').html("");
+                                    $('#ErrPincode').html("");
+                                    
+                                    $('#CustomerName').val("");
+                                    $('#MobileNumber').val("");
+                                    $('#EmaiIID').val("");
+                                    $('#AddressLine1').val("");
+                                    $('#AddressLine3').val("");
+                                    $('#AddressLine4').val("");
+                                    $('#Pincode').val("");
+                                    
                                 }
                             </script>
 <?php include_once("footer.php");?>

@@ -172,7 +172,27 @@ border-bottom: 1px solid #ebecec !important;
                                 </ul>
                             </div>
                         </li>
-                         
+                        <li class="nav-item">
+                            <a data-toggle="collapse" href="#Customers">
+                                <i class="fas fa-layer-group"></i>
+                                <p>Customers</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="Customers">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="AddCustomer.php">
+                                            <span class="sub-item">Create Customer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="ViewCustomers.php">
+                                            <span class="sub-item">Manage My Customers</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> 
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#Accounts">
                                 <i class="fas fa-layer-group"></i>

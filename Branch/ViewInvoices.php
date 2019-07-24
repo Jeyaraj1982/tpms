@@ -51,6 +51,8 @@
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="ViewInvoiceInfo.php?Invoice=<?php echo $invoice["InvoiceNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
                                         <i class="fa fa-list-alt"></i>
+                                        </a>&nbsp;<a target="_blank" href="download.php?Invoice=<?php echo $invoice["InvoiceNumber"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 2px 10px" >
+                                        <i class="fas fa-download"></i>
                                         </a>
                                     </div>
                                 </td>

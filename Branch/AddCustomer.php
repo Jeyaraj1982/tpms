@@ -57,12 +57,10 @@
                         $('#ErrCustomerName').html("");
                         $('#ErrMobileNumber').html("");
                         $('#ErrEmailID').html("");
-                        $('#ErrPinCode').html("");
                         
                         ErrorCount = 0;
                         
                         IsNonEmpty("CustomerCode", "ErrCustomerCode", "Please Enter Valid Customer Code");
-                        IsNonEmpty("PinCode", "ErrPinCode", "Please Enter Pin Code");
                         
                         if(IsNonEmpty("CustomerName", "ErrCustomerName", "Please Enter Customer Name")) {
                             IsAlphaNumeric("CustomerName", "ErrCustomerName", "Please Enter AlphaNumeric Characters Only"); 
@@ -131,7 +129,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group form-inline">
-                                                 <div class="col-sm-2">Address Line 1<span id="star">*</span></div>
+                                                 <div class="col-sm-2">Address Line 1</div>
                                                 <div class="col-sm-4">
                                                 <input type="text" class="form-control" id="AddressLine1" name="AddressLine1" value="<?php echo (isset($_POST['AddressLine1']) ? $_POST['AddressLine1'] : "");?>" placeholder="Enter Address Line 1" style="width:100%">
                                                 <span class="errorstring" id="ErrAddressLine1"><?php echo isset($ErrAddressLine1)? $ErrAddressLine1 : "";?></span>
@@ -150,7 +148,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group form-inline">
-                                                 <div class="col-sm-2">Pincode<span id="star">*</span></div>
+                                                 <div class="col-sm-2">Pincode</div>
                                                 <div class="col-sm-4">
                                                 <input type="text" class="form-control" maxlength="6" id="PinCode" value="<?php echo (isset($_POST['PinCode']) ? $_POST['PinCode'] : "");?>"  name="PinCode" placeholder="Enter Pincode" style="width:100%">
                                                 <span class="errorstring" id="ErrPinCode"><?php echo isset($ErrPinCode)? $ErrPinCode : "";?></span>

@@ -42,6 +42,10 @@
                                                 <a href="ViewCustomerDetails.php?CusCode=<?php echo $Customer["CustomerCode"];?>" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" style="padding: 0px;" >
                                                     <i class="fa fa-list-alt"></i>
                                                 </a>
+                                                &nbsp;&nbsp;
+                                                <a data-toggle="modal" data-target="#Delete" class="btn btn-link btn-primary btn-lg" style="padding: 0px;" >
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
                                                 </div></td>
                                                 </tr>
                                             <?php }?>
@@ -54,5 +58,27 @@
                     </div>
                 </div>
             </div>
-            
+             <div class="modal fade" id="Delete" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header no-bd">
+                            <h5 class="modal-title">Delete Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="" id="" name="">
+                                <div class="form-group">
+                                    <div class="col-sm-6" style="text-align:center">Do you want delete?</div>
+                                </div>
+                                <div class="card-action">
+                                    <a class="btn btn-success" name="yes" style="color: white;">Yes</a>
+                                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <?php  include_once("footer.php");?>

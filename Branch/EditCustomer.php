@@ -3,7 +3,11 @@
     if (isset($_POST['UpdateCustomer'])) {
         
         $ErrorCount =0;
-        
+        $Customer = $mysql->select("select * from _tbl_customers where  CreatedByID='".$_SESSION['User']['BranchID']."' and CustomerCode='".$_GET['CusCode']."'");
+        if (sizeof($Customer)==0) {
+          $errorMessage = "Invlaid Customer";  
+          $ErrorCount++;
+        }
         $duplicate= $mysql->select("select * from  _tbl_customers where MobileNumber='".$_POST['MobileNumber']."' and CustomerCode<>'".$_GET['CusCode']."'");
         if (sizeof($duplicate)>0) {
              $ErrMobileNumber="Mobile Number Already Exists";    
@@ -30,15 +34,23 @@
             $errorMessage = "Some error occured, couldn't be update customer information.";
         }
     }
-    $Customer = $mysql->select("select * from _tbl_customers where CustomerCode='".$_GET['CusCode']."'");
+    $Customer = $mysql->select("select * from _tbl_customers where  CreatedByID='".$_SESSION['User']['BranchID']."' and CustomerCode='".$_GET['CusCode']."'");
 ?>
 <script>
+$(document).ready(function () {
+  $("#MobileNumber").keypress(function (e) {
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        $("#ErrMobileNumber").html("Digits Only").fadeIn("slow");
+               return false;
+    }
+   });
+   });
+
              function submitCustomerDetails() {
                  
                         $('#ErrCustomerName').html("");
                         $('#ErrMobileNumber').html("");
                         $('#ErrEmailID').html("");
-                        $('#ErrPinCode').html("");
                         
                         ErrorCount = 0;
                         
@@ -52,8 +64,7 @@
                         
                         if(IsNonEmpty("EmailID", "ErrEmailID", "Please Enter Email Address")) {
                             IsEmail("EmailID", "ErrEmailID", "Please Enter valid  Email Address"); 
-                        } 
-                        IsNonEmpty("PinCode","ErrPinCode","Please Enter Pincode");       
+                        }        
                         if (ErrorCount == 0) {
                             return true;
                         } else {
@@ -109,7 +120,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group form-inline">
-                                                 <div class="col-sm-2">Address Line 1<span pd="star">*</span></div>
+                                                 <div class="col-sm-2">Address Line 1<span id="star">*</span></div>
                                                 <div class="col-sm-4">
                                                 <input type="text" class="form-control" id="AddressLine1" name="AddressLine1" value="<?php echo (isset($_POST['AddressLine1']) ? $_POST['AddressLine1'] : $Customer[0]['AddressLine1']);?>" placeholder="Enter Address Line 1" style="width:100%">
                                                 <span class="errorstring" id="ErrAddressLine1"><?php echo isset($ErrAddressLine1)? $ErrAddressLine1 : "";?></span>
@@ -136,7 +147,7 @@
                                             </div>
                                             <div class="card-action" style="text-align:right">
                                     <button class="btn btn-success" name="UpdateCustomer">Update</button>
-                                    <a href="ManageCustomer.php" class="btn btn-danger">Cancel</a>
+                                    <a href="ViewCustomers.php" class="btn btn-danger">Cancel</a>
                                 </div>
                                             </form>
                                         </div>

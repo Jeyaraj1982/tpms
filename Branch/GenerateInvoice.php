@@ -56,7 +56,7 @@
                                                                                            "Amount"        => $items['Amount'],
                                                                                            "TAmount"       => $items['TAmount'],
                                                                                            "ServiceCharge" => $items['ServiceCharge'],
-                                                                                           "TsAmount"      => $items['TSAmount'],
+                                                                                           "TsAmount"      => $items['TsAmount'],
                                                                                            "Remarks"       => $items['Remarks'],
                                                                                            "TimeOfJourney" => $items['TimeOfJourney'],
                                                                                            "DateOfJourney" => $items['DateOfJourney'],

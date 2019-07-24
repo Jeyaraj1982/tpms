@@ -63,19 +63,16 @@ $(document).ready(function () {
         <div class="modal-body">
             <form method="post" onsubmit="return submitpopproduct()" name="frm_<?php echo $formid;?>" id="frm_<?php echo $formid;?>">
             
-                <div class="form-group">
-                    <div class="col-sm-6">Supplier</div>
-                    <div class="col-sm-6">
-                        <select class="selectpicker form-control" data-live-search="true" id="Supplier"  name="SupplierCode">
+                <div class="form-group row">
+                    <div class="col-sm-12">Supplier<span id="star">*</span><select class="selectpicker form-control" data-live-search="true" id="Supplier"  name="SupplierCode">
                             <?php foreach($suppliers as $supplier) { ?>
                                 <option value="<?php echo $supplier['SupplierCode'];?>"> <?php echo $supplier['SupplierName'];?></option>
                             <?php } ?>
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-6">Product</div>
-                    <div class="col-sm-6">
+                <div class="form-group row">
+                    <div class="col-sm-12">Product<span id="star">*</span>
                         <select class="selectpicker form-control" data-live-search="true" id="Product"  name="ProductCode">
                             <?php foreach($Products as $Product) { ?>
                             <option value="<?php echo $Product['ProductCode'];?>"> <?php echo $Product['ProductName'];?></option>
@@ -83,44 +80,36 @@ $(document).ready(function () {
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-6">Qty</div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="Qty" id="Qty">
+                <div class="form-group row">
+                    <div class="col-sm-4">Qty<span id="star">*</span>
+                        <input type="text" class="form-control" name="Qty" id="Qty" style="text-align:right" placeholder="1">
                             <span class="errorstring" id="ErrQty"><?php echo isset($ErrQty)? $ErrQty : "";?></span>
                         </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-6">Amount</div>
-                    <div class="col-sm-6"><input type="text" class="form-control" name="Amount" id="Amount"><span class="errorstring" id="ErrCustomerName">
+                <div class="col-sm-4">Amount<span id="star">*</span>
+                <input type="text" class="form-control" name="Amount" id="Amount" style="text-align:right" placeholder="1"><span class="errorstring" id="ErrCustomerName">
                         <span class="errorstring" id="ErrAmount"><?php echo isset($ErrAmount)? $ErrAmount : "";?></div>
-                </div>
-                 <div class="form-group">
-                    <div class="col-sm-6">Service Charge</div>
-                    <div class="col-sm-6"><input type="text" class="form-control" name="ServiceCharge" id="ServiceCharge">
+               <div class="col-sm-4">Service Charge<span id="star">*</span>
+               <input type="text" class="form-control" name="ServiceCharge" id="ServiceCharge" style="text-align:right" placeholder="0.00">
                     <span class="errorstring" id="ErrServiceCharge"><?php echo isset($ErrServiceCharge)? $ErrServiceCharge : "";?></div>
                 </div>
                  <!--<div class="form-group">
                     <div class="col-sm-6">Date Of Journey </div>
                     <div class="col-sm-6"><input type="text" class="form-control" name="DateOfJourney" id="DateOfJourney"></div>
                 </div>-->
-                <div class="form-group">
-                    <div class="col-sm-6">Date Of Journey </div>
-                    <div class="col-sm-6"><input type="date" class="input-group date" id="datePicker"></div>
+                <div class="form-group row">
+                    <div class="col-sm-6">Date Of Journey <input type="date" class="form-control" id="datePicker"></div>
+                    <div class="col-sm-6">Time of Journey <input type="text" class="form-control" name="TimeOfJourney" id="TimeOfJourney" placeholder="00:00"></div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-6">Time of Journey </div>
-                    <div class="col-sm-6"><input type="text" class="form-control" name="TimeOfJourney" id="TimeOfJourney"></div>
+                <div class="form-group row">
+                    <div class="col-sm-12">Order Remarks<span id="star">*</span><input type="text" class="form-control" name="Remarks" id="Remarks"></div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-6">Order Remarks</div>
-                    <div class="col-sm-6"><input type="text" class="form-control" name="Remarks" id="Remarks"></div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-6">Official Remarks</div>
-                    <div class="col-sm-6"><input type="text" class="form-control" name="OffRemarks" id="OffRemarks"></div>
+                <div class="form-group row">
+                    <div class="col-sm-12">Official Remarks<span id="star">*</span><input type="text" class="form-control" name="OffRemarks" id="OffRemarks"></div>
                 </div>
             </form>
+        </div>
+        
+        <div class="modal-footer no-bd" style="float:left;color:red" id="product_body_error">
         </div>
         <div class="modal-footer no-bd" style="float:left">
             <button type="button" id="addRowButton" class="btn btn-primary" onclick="addToCart('frm_<?php echo $formid;?>');">Add</button>
@@ -134,27 +123,32 @@ $(document).ready(function () {
        
         $Products = $mysql->select("select * from _tbl_products where ProductCode='".$_POST['ProductCode']."'");
         $suppliers = $mysql->select("select * from _tbl_suppliers where SupplierCode='".$_POST['SupplierCode']."'");
+        
+        $serviceCharge = (isset($_POST['ServiceCharge']) && $_POST['ServiceCharge']>0) ? $_POST['ServiceCharge'] : 0;
+        $qty = (isset($_POST['Qty']) && $_POST['Qty']>0) ? $_POST['Qty'] : 1;
+        
+        if (isset($_POST['Amount']) && $_POST['Amount']>0) {
         $item = array("ProductCode"     => $_POST['ProductCode'],
                       "ProductName"     => $Products[0]['ProductName'],
                       "ProductID"       => $Products[0]['ProductID'],
                       "SupplierID"      => $suppliers[0]['SupplierID'],
                       "SupplierCode"    => $_POST['SupplierCode'],
                       "SupplierName"    => $suppliers[0]['SupplierName'],
-                      "Qty"             => $_POST['Qty'],
+                      "Qty"             => $qty,
                       "Amount"          => $_POST['Amount'],
-                      "TAmount"         => $_POST['Qty']*$_POST['Amount'],        
-                      "ServiceCharge"   => $_POST['ServiceCharge'],        
-                      "TSAmount"        => ($_POST['Qty']*$_POST['Amount'])+$_POST['ServiceCharge'],
+                      "TAmount"         => $qty*$_POST['Amount'],        
+                      "ServiceCharge"   => $serviceCharge,        
+                      "TSAmount"        => ($qty*$_POST['Amount'])+$serviceCharge,
                       "Remarks"         => $_POST['Remarks'],
                       "TimeOfJourney"   => $_POST['TimeOfJourney'],
                       "DateOfJourney"   => $_POST['DateOfJourney'],
                       "OffRemarks"      => $_POST['OffRemarks']);
         
         $_SESSION['order']['items'][]=$item;
-        
-        ?>
-        
-        <?php
+            echo "success";
+        } else {
+            echo "Invalid Amount";
+        }
         
     }
     
@@ -278,16 +272,16 @@ $(document).ready(function () {
     }
     
     function addCustomer() {
+        
           global $mysql;
         $duplicate = $mysql->select("select * from  _tbl_customers where MobileNumber='".trim($_POST['MobileNumber'])."'");
         if (sizeof($duplicate)>0) {
              echo  "Mobile Number Already Exists"; 
              return;   
-             
         }
         
-        $duplicate = $mysql->select("select * from  _tbl_customers where EmailID='".trim($_POST['EmailID'])."'");
-        if (sizeof($duplicate)>0) {
+        $eduplicate = $mysql->select("select * from  _tbl_customers where EmailID='".trim($_POST['EmaiIID'])."'");
+        if (sizeof($eduplicate)>0) {
              echo  "Email ID Already Exists";    
              return ;
         }
@@ -298,7 +292,7 @@ $(document).ready(function () {
         $Customer = $mysql->insert("_tbl_customers",array("CustomerCode"       => $customerCode,
                                                           "CustomerName"       => trim($_POST['CustomerName']),
                                                           "MobileNumber"       => trim($_POST['MobileNumber']),
-                                                          "EmailID"            => trim($_POST['EmailID']),
+                                                          "EmailID"            => trim($_POST['EmaiIID']),
                                                           "AddressLine1"       => trim($_POST['AddressLine1']),
                                                           "AddressLine2"       => trim($_POST['AddressLine2']),
                                                           "AddressLine3"       => trim($_POST['AddressLine3']),
